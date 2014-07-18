@@ -1,0 +1,76 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+<Script file="WoW_SoundTrack.lua" />
+
+<Frame name="MainFrame" parent="UIParent" toplevel="true" enableMouse="true" movable="true">
+	<Size>
+		<AbsDimension x="800" y="400" />
+	</Size>
+	<Anchors>
+		<Anchor point="CENTER" />
+	</Anchors>
+	<Scripts>
+		<OnLoad>self:RegisterForDrag("LeftButton");</OnLoad>
+		<OnDragStart>self:StartMoving();</OnDragStart>
+		<OnDragStop>self:StopMovingOrSizing();</OnDragStop>
+	</Scripts>
+	<Backdrop edgeFile="Interface\DialogFrame\UI-DialogBox-Gold-Border" tile="true">
+		<BackgroundInsets>
+			<AbsInset left="11" right="12" top="12" bottom="11"/>
+		</BackgroundInsets>
+		<TileSize>
+			<AbsValue val="32"/>
+		</TileSize>
+		<EdgeSize>
+			<AbsValue val="32"/>
+		</EdgeSize>
+	</Backdrop>
+	<Layers>
+		<Layer level="BACKGROUND">
+			<Texture file="Interface\AchievementFrame\UI-Achievement-Parchment-Horizontal" parentKey="background">
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset>
+							<AbsDimension x="3" y="-3"/>
+						</Offset>
+					</Anchor>
+					<Anchor point="BOTTOMRIGHT">
+						<Offset>
+							<AbsDimension x="-3" y="3"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Texture>						
+		</Layer>
+		<Layer level="ARTWORK">
+			<Texture file="Interface\DialogFrame\UI-DialogBox-Gold-Header" parentKey="background">
+				<Anchors>
+					<Anchor point="TOP">
+						<Offset>
+							<AbsDimension x="0" y="12"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Texture>						
+		</Layer>
+		<Layer level="OVERLAY">
+			<FontString inherits="GameFontHighlightSmall" text="WoW SoundTrack">
+				<Anchors>
+					<Anchor point="TOP">
+						<Offset>
+							<AbsDimension x="0" y="-3"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</FontString>
+		</Layer>
+	</Layers>
+	<Frames>
+		<Button name="CloseButton" inherits="UIPanelCloseButton">
+			<Anchors>
+				<Anchor point="TOPRIGHT" x="-3" y="-3"/>
+			</Anchors>
+		</Button>
+	</Frames>
+</Frame>
+</Ui>
