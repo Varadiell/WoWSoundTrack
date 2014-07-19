@@ -4,7 +4,7 @@
 
 <Frame name="MainFrame" parent="UIParent" toplevel="true" enableMouse="true" movable="true">
 	<Size>
-		<AbsDimension x="800" y="400" />
+		<AbsDimension x="800" y="250" />
 	</Size>
 	<Anchors>
 		<Anchor point="CENTER" />
@@ -43,7 +43,7 @@
 			</Texture>						
 		</Layer>
 		<Layer level="ARTWORK">
-			<Texture file="Interface\DialogFrame\UI-DialogBox-Gold-Header" parentKey="background">
+			<Texture file="Interface\DialogFrame\UI-DialogBox-Gold-Header">
 				<Anchors>
 					<Anchor point="TOP">
 						<Offset>
@@ -51,7 +51,52 @@
 						</Offset>
 					</Anchor>
 				</Anchors>
-			</Texture>						
+			</Texture>
+			<Texture file="Interface/ACHIEVEMENTFRAME/UI-Achievement-Reward-Background">
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset>
+							<AbsDimension x="20" y="-40"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Texture>
+			<Texture file="Interface/ACHIEVEMENTFRAME/UI-Achievement-Reward-Background">
+				<Anchors>
+					<Anchor point="TOPRIGHT">
+						<Offset>
+							<AbsDimension x="140" y="-40"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Texture>
+			<Texture file="Interface/ACHIEVEMENTFRAME/UI-Achievement-Reward-Background">
+				<Anchors>
+					<Anchor point="BOTTOMRIGHT">
+						<Offset>
+							<AbsDimension x="140" y="90"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Texture>
+			<Texture file="Interface/BUTTONS/UI-SpellbookIcon-NextPage-Up">
+				<Anchors>
+					<Anchor point="RIGHT">
+						<Offset>
+							<AbsDimension x="-328" y="-40"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Texture>
+			<Texture file="Interface/BUTTONS/UI-SpellbookIcon-NextPage-Up">
+				<Anchors>
+					<Anchor point="RIGHT">
+						<Offset>
+							<AbsDimension x="-328" y="-70"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Texture>
 		</Layer>
 		<Layer level="OVERLAY">
 			<FontString inherits="GameFontHighlightSmall" text="WoW SoundTrack">
@@ -59,6 +104,33 @@
 					<Anchor point="TOP">
 						<Offset>
 							<AbsDimension x="0" y="-3"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</FontString>
+			<FontString inherits="GameFontHighlightMedium" text="Choisissez une musique à jouer :">
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset>
+							<AbsDimension x="81" y="-42"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</FontString>
+			<FontString inherits="GameFontHighlightMedium" text="Lecture en cours">
+				<Anchors>
+					<Anchor point="TOPRIGHT">
+						<Offset>
+							<AbsDimension x="-140" y="-42"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</FontString>
+			<FontString inherits="GameFontHighlightMedium" text="Commandes">
+				<Anchors>
+					<Anchor point="BOTTOMRIGHT">
+						<Offset>
+							<AbsDimension x="-152" y="105"/>
 						</Offset>
 					</Anchor>
 				</Anchors>
@@ -73,4 +145,172 @@
 		</Button>
 	</Frames>
 </Frame>
+
+
+
+<Frame name="FrameMusiqueEnCours" parent="MainFrame" enableMouse="true" movable="true">
+	<Size>
+		<AbsDimension x="370" y="30"/>
+	</Size>
+	<Anchors>
+		<Anchor point="TOP" x="195" y="-59"/>
+	</Anchors>
+	<Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Gold-Border" tile="true">
+		<BackgroundInsets>
+			<AbsInset left="4" right="4" top="4" bottom="4" />
+		</BackgroundInsets>
+		<TileSize>
+			<AbsValue val="16" />
+		</TileSize>
+		<EdgeSize>
+			<AbsValue val="16" />
+		</EdgeSize>
+	</Backdrop>	
+	<Layers>
+		<Layer level="OVERLAY">
+			<FontString inherits="GameFontHighlightSmall" text="Test de nom de musique">
+				<Anchors>
+					<Anchor point="CENTER">
+						<Offset>
+							<AbsDimension x="0" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</FontString>
+		</Layer>
+	</Layers>
+</Frame>
+
+
+
+
+
+
+<Button name="MyModEntryTemplate" virtual="true">
+	<Size>
+		<AbsDimension x="340" y="16" />
+	</Size>
+	<NormalFont style="GameFontHighlightLeft"/>
+</Button>
+
+<Frame name="MyMod" parent="MainFrame" enableMouse="true" movable="true">
+	<Size>
+		<AbsDimension x="380" y="176"/>
+	</Size>
+	<Anchors>
+		<Anchor point="BOTTOMLEFT" x="15" y="15"/>
+	</Anchors>
+	<Scripts>
+		<OnLoad>
+			MyMod_OnLoad()
+		</OnLoad>
+	</Scripts>
+	<Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Gold-Border" tile="true">
+		<BackgroundInsets>
+			<AbsInset left="4" right="4" top="4" bottom="4" />
+		</BackgroundInsets>
+		<TileSize>
+			<AbsValue val="16" />
+		</TileSize>
+		<EdgeSize>
+			<AbsValue val="16" />
+		</EdgeSize>
+	</Backdrop>
+	<Frames>
+		<ScrollFrame name="MyModScrollBar" inherits="FauxScrollFrameTemplate" hidden="true">
+			<Anchors>
+				<Anchor point="TOPLEFT">
+					<Offset>
+						<AbsDimension x="0" y="-8"/>
+					</Offset>
+				</Anchor>
+				<Anchor point="BOTTOMRIGHT">
+					<Offset>
+						<AbsDimension x="-30" y="8"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+			<Scripts>
+				<OnVerticalScroll>FauxScrollFrame_OnVerticalScroll(self, offset, 16, MyModScrollBar_Update);</OnVerticalScroll>
+				<OnShow>MyModScrollBar_Update()</OnShow>
+			</Scripts>
+		</ScrollFrame>
+
+		<Button name="MyModEntry1" inherits="MyModEntryTemplate">
+			<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="MyModScrollBar" relativePoint="TOPLEFT">
+					<Offset>
+						<AbsDimension x="8" y="0"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+		</Button>
+
+		<Button name="MyModEntry2" inherits="MyModEntryTemplate">
+			<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="MyModEntry1" relativePoint="BOTTOMLEFT"/>
+			</Anchors>
+		</Button>
+
+		<Button name="MyModEntry3" inherits="MyModEntryTemplate">
+			<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="MyModEntry2" relativePoint="BOTTOMLEFT"/>
+			</Anchors>
+		</Button>
+
+		<Button name="MyModEntry4" inherits="MyModEntryTemplate">
+			<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="MyModEntry3" relativePoint="BOTTOMLEFT"/>
+			</Anchors>
+		</Button>
+
+		<Button name="MyModEntry5" inherits="MyModEntryTemplate">
+			<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="MyModEntry4" relativePoint="BOTTOMLEFT"/>
+			</Anchors>
+		</Button>
+
+		<Button name="MyModEntry6" inherits="MyModEntryTemplate">
+			<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="MyModEntry5" relativePoint="BOTTOMLEFT"/>
+			</Anchors>
+		</Button>
+
+		<Button name="MyModEntry7" inherits="MyModEntryTemplate">
+			<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="MyModEntry6" relativePoint="BOTTOMLEFT"/>
+			</Anchors>
+		</Button>
+
+		<Button name="MyModEntry8" inherits="MyModEntryTemplate">
+			<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="MyModEntry7" relativePoint="BOTTOMLEFT"/>
+			</Anchors>
+		</Button>
+
+		<Button name="MyModEntry9" inherits="MyModEntryTemplate">
+			<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="MyModEntry8" relativePoint="BOTTOMLEFT"/>
+			</Anchors>
+		</Button>
+
+		<Button name="MyModEntry10" inherits="MyModEntryTemplate">
+			<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="MyModEntry9" relativePoint="BOTTOMLEFT"/>
+			</Anchors>
+		</Button>
+
+	</Frames>
+	
+</Frame>
+
+
+
+
+
+
+
+
+
+
 </Ui>
