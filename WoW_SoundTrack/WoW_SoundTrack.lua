@@ -1,3 +1,58 @@
+
+-- ==================================
+-- Fonctions de visibilité de l'AddOn
+-- ==================================
+
+-- MainFrame_Show() : affiche la fenêtre
+function MainFrame_Show()
+	if(MainFrame:IsShown()) then
+		MainFrame_Hide();
+	else
+		ShowUIPanel(MainFrame);
+	end
+end
+
+-- MainFrame_Close() : cache la fenêtre
+function MainFrame_Hide()
+	HideUIPanel(MainFrame);
+end
+
+
+-- ==============================
+-- Commandes d'action sur l'AddOn
+-- ==============================
+
+-- "/ws" : ouvre ou ferme la fenêtre en fonction de son état
+-- "/ws open" : ouvre ou ferme la fenêtre en fonction de son état
+-- "/ws close" : ferme la fenêtre si elle est ouverte
+
+SLASH_SlashCmd_1 = "/ws"
+SLASH_SlashCmd_2 = "/wst"
+SLASH_SlashCmd_3 = "/wost"
+SLASH_SlashCmd_4 = "/wows"
+SLASH_SlashCmd_5 = "/wowst"
+SLASH_SlashCmd_6 = "/wowost"
+
+SlashCmdList["SlashCmd_"] = function(msg)
+	if(msg:trim() == "open" or msg:trim() == "run") then
+		MainFrame_Show();
+	elseif(msg:trim() == "close" or msg:trim() == "hide") then
+		MainFrame_Hide();
+	elseif(msg:trim() == "") then
+		MainFrame_Show();
+	else
+		print("WoW_SoundTrack : cette commande ("..msg..") est inconnue.");
+	end
+end
+
+-- ==================
+
+
+
+
+
+
+
 MyModData = {}
 
 function MyMod_OnLoad()
@@ -23,3 +78,4 @@ function MyModScrollBar_Update()
     end
   end
 end
+

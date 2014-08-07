@@ -2,7 +2,7 @@
 
 <Script file="WoW_SoundTrack.lua" />
 
-<Frame name="MainFrame" parent="UIParent" toplevel="true" enableMouse="true" movable="true">
+<Frame name="MainFrame" parent="UIParent" toplevel="true" enableMouse="true" movable="true" hidden="false">
 	<Size>
 		<AbsDimension x="800" y="250" />
 	</Size>
@@ -148,50 +148,14 @@
 
 
 
-<Frame name="FrameMusiqueEnCours" parent="MainFrame" enableMouse="true" movable="true">
-	<Size>
-		<AbsDimension x="370" y="30"/>
-	</Size>
-	<Anchors>
-		<Anchor point="TOP" x="195" y="-59"/>
-	</Anchors>
-	<Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Gold-Border" tile="true">
-		<BackgroundInsets>
-			<AbsInset left="4" right="4" top="4" bottom="4" />
-		</BackgroundInsets>
-		<TileSize>
-			<AbsValue val="16" />
-		</TileSize>
-		<EdgeSize>
-			<AbsValue val="16" />
-		</EdgeSize>
-	</Backdrop>	
-	<Layers>
-		<Layer level="OVERLAY">
-			<FontString inherits="GameFontHighlightSmall" text="Test de nom de musique">
-				<Anchors>
-					<Anchor point="CENTER">
-						<Offset>
-							<AbsDimension x="0" y="0"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-			</FontString>
-		</Layer>
-	</Layers>
-</Frame>
-
-
-
-
-
-
 <Button name="MyModEntryTemplate" virtual="true">
 	<Size>
 		<AbsDimension x="340" y="16" />
 	</Size>
 	<NormalFont style="GameFontHighlightLeft"/>
 </Button>
+
+
 
 <Frame name="MyMod" parent="MainFrame" enableMouse="true" movable="true">
 	<Size>
@@ -306,11 +270,42 @@
 
 
 
-
-
-
-
-
+<Frame name="FrameMusiqueEnCours" parent="MainFrame" enableMouse="true" movable="true">
+	<Size>
+		<AbsDimension x="370" y="30"/>
+	</Size>
+	<Anchors>
+		<Anchor point="TOP" x="195" y="-59"/>
+	</Anchors>
+	<Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Gold-Border" tile="true">
+		<BackgroundInsets>
+			<AbsInset left="4" right="4" top="4" bottom="4" />
+		</BackgroundInsets>
+		<TileSize>
+			<AbsValue val="16" />
+		</TileSize>
+		<EdgeSize>
+			<AbsValue val="16" />
+		</EdgeSize>
+	</Backdrop>	
+	<Layers>
+		<Layer level="OVERLAY">
+			<FontString inherits="GameFontHighlightSmall" text="Test de nom de musique">
+				<Anchors>
+					<Anchor point="CENTER">
+						<Offset>
+							<AbsDimension x="0" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</FontString>
+		</Layer>
+	</Layers>
+</Frame>
 
 
 </Ui>
+
+
+
+
