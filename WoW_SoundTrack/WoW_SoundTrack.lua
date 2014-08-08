@@ -1,26 +1,44 @@
 
--- ==================================
--- Fonctions de visibilité de l'AddOn
--- ==================================
+-- ==========================================================
+-- Fonctions de visibilité de la MainFrame et sons de l'addOn
+-- ==========================================================
 
 -- MainFrame_Show() : affiche la fenêtre
 function MainFrame_Show()
 	if(MainFrame:IsShown()) then
 		MainFrame_Hide();
+		PlayCloseSound();
 	else
 		ShowUIPanel(MainFrame);
+		PlayOpenSound();
 	end
 end
 
 -- MainFrame_Close() : cache la fenêtre
 function MainFrame_Hide()
 	HideUIPanel(MainFrame);
+	PlaySound("igCharacterInfoClose");
+end
+
+-- PlayCloseSound() : joue le son de fermeture de la fenêtre
+function PlayCloseSound()
+	PlaySound("igCharacterInfoClose");
+end
+
+-- PlayOpenSound() : joue le son d'ouverture de la fenêtre
+function PlayOpenSound()
+	PlaySound("igCharacterInfoOpen");
+end
+
+-- PlayButtonSound() : joue le son d'un bouton actionné
+function PlayButtonSound()
+	PlaySound("UChatScrollButton");
 end
 
 
--- ==============================
--- Commandes d'action sur l'AddOn
--- ==============================
+-- ==========================
+-- Commandes slash de l'AddOn
+-- ==========================
 
 -- "/ws" : ouvre ou ferme la fenêtre en fonction de son état
 -- "/ws open" : ouvre ou ferme la fenêtre en fonction de son état
@@ -41,24 +59,26 @@ SlashCmdList["SlashCmd_"] = function(msg)
 	elseif(msg:trim() == "") then
 		MainFrame_Show();
 	else
-		print("WoW_SoundTrack : cette commande ("..msg..") est inconnue.");
+		print("WoW_SoundTrack : cette commande (\""..msg.."\") n'existe pas.");
 	end
 end
 
--- ===================================================
--- Fonctions de lecture et arrêt de lecture de musique
--- ===================================================
+-- ==========================================
+-- Fonctions de lecture et d'arrêt de musique
+-- ==========================================
 
 local musicselected = "Sound\\Music\\ZoneMusic\\Naxxramas\\NaxxramasSpiderWing1.mp3"
 
 -- PlayMusicFunction() : joue la musique sélectionnée
 function PlayMusicFunction()
-	PlayMusic(musicselected);
+	PlayMusic(musicselected, "Ambience");
+	PlayButtonSound();
 end
 
--- StopMusicFunction() : arrête la musique mp3 en train d'être jouée
+-- StopMusicFunction() : arrête la musique en train d'être jouée
 function StopMusicFunction()
 	StopMusic();
+	PlayButtonSound()
 end
 
 -- =================================
