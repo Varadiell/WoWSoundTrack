@@ -45,8 +45,23 @@ SlashCmdList["SlashCmd_"] = function(msg)
 	end
 end
 
--- ==================
+-- ===================================================
+-- Fonctions de lecture et arrêt de lecture de musique
+-- ===================================================
 
+local musicselected = "Sound\\Music\\ZoneMusic\\Naxxramas\\NaxxramasSpiderWing1.mp3"
+
+-- PlayMusicFunction() : joue la musique sélectionnée
+function PlayMusicFunction()
+	PlayMusic(musicselected);
+end
+
+-- StopMusicFunction() : arrête la musique mp3 en train d'être jouée
+function StopMusicFunction()
+	StopMusic();
+end
+
+-- =================================
 
 
 

@@ -79,24 +79,6 @@
 					</Anchor>
 				</Anchors>
 			</Texture>
-			<Texture file="Interface/BUTTONS/UI-SpellbookIcon-NextPage-Up">
-				<Anchors>
-					<Anchor point="RIGHT">
-						<Offset>
-							<AbsDimension x="-328" y="-40"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-			</Texture>
-			<Texture file="Interface/BUTTONS/UI-SpellbookIcon-NextPage-Up">
-				<Anchors>
-					<Anchor point="RIGHT">
-						<Offset>
-							<AbsDimension x="-328" y="-70"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-			</Texture>
 		</Layer>
 		<Layer level="OVERLAY">
 			<FontString inherits="GameFontHighlightSmall" text="WoW SoundTrack">
@@ -302,6 +284,57 @@
 		</Layer>
 	</Layers>
 </Frame>
+
+
+
+<Button name="ButtonClose" parent="MainFrame" inherits="OptionsButtonTemplate" text="Fermer">
+	<Anchors>
+		<Anchor point="BOTTOMRIGHT">
+			<Offset>
+				<AbsDimension x="-12" y="12"/>
+			</Offset>
+		</Anchor>
+	</Anchors>
+	<Scripts>
+		<OnClick> MainFrame_Hide(); </OnClick>
+	</Scripts>
+</Button>
+
+
+<Button name="ButtonPlay" parent="MainFrame" inherits="OptionsButtonTemplate" text="Jouer">
+	<Size>
+		<AbsDimension x="120" y="24" />
+	</Size>
+	<Anchors>
+		<Anchor point="BOTTOMRIGHT">
+			<Offset>
+				<AbsDimension x="-198" y="65"/>
+			</Offset>
+		</Anchor>
+	</Anchors>
+	<Scripts>
+		<OnClick> PlayMusicFunction(); </OnClick>
+	</Scripts>
+</Button>
+
+
+<Button name="ButtonStop" parent="MainFrame" inherits="OptionsButtonTemplate" text="Arrêter">
+	<Size>
+		<AbsDimension x="120" y="24" />
+	</Size>
+	<Anchors>
+		<Anchor point="BOTTOMRIGHT">
+			<Offset>
+				<AbsDimension x="-75" y="65"/>
+			</Offset>
+		</Anchor>
+	</Anchors>
+	<Scripts>
+		<OnClick> StopMusicFunction() </OnClick>
+	</Scripts>
+</Button>
+
+
 
 
 </Ui>
