@@ -124,6 +124,9 @@
 			<Anchors>
 				<Anchor point="TOPRIGHT" x="-3" y="-3"/>
 			</Anchors>
+			<Scripts>
+				<OnClick> ButtonCloseFunction(); </OnClick>
+			</Scripts>
 		</Button>
 	</Frames>
 </Frame>
@@ -272,7 +275,7 @@
 	</Backdrop>	
 	<Layers>
 		<Layer level="OVERLAY">
-			<FontString inherits="GameFontHighlightSmall" text="Test de nom de musique">
+			<FontString name="StringMusiqueEnCours" inherits="GameFontHighlightSmall" text="Choisissez une musique à jouer depuis la liste de gauche">
 				<Anchors>
 					<Anchor point="CENTER">
 						<Offset>
@@ -296,7 +299,7 @@
 		</Anchor>
 	</Anchors>
 	<Scripts>
-		<OnClick> MainFrame_Hide(); </OnClick>
+		<OnClick> ButtonCloseFunction(); </OnClick>
 	</Scripts>
 </Button>
 
@@ -313,7 +316,7 @@
 		</Anchor>
 	</Anchors>
 	<Scripts>
-		<OnClick> PlayMusicFunction(); </OnClick>
+		<OnClick> ButtonPlayFunction(); </OnClick>
 	</Scripts>
 </Button>
 
@@ -330,7 +333,7 @@
 		</Anchor>
 	</Anchors>
 	<Scripts>
-		<OnClick> StopMusicFunction() </OnClick>
+		<OnClick> ButtonStopFunction() </OnClick>
 	</Scripts>
 </Button>
 

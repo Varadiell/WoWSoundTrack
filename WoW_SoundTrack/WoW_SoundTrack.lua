@@ -1,12 +1,48 @@
 
--- ==========================================================
--- Fonctions de visibilité de la MainFrame et sons de l'addOn
--- ==========================================================
+-- ============================
+-- Variables locales de l'addOn
+-- ============================
 
--- MainFrame_Show() : affiche la fenêtre
-function MainFrame_Show()
+-- Musique définie directement en attendant d'être meilleur en LUA !
+local musicselected = "";
+
+
+
+-- ===================================================
+-- Création des évènements et des scripts déclencheurs
+-- ===================================================
+
+-- Création de la Frame EventFrame
+local EventFrame = CreateFrame("Frame");
+
+-- Création des évènements déclencheurs de EventFrame
+EventFrame:RegisterEvent("PLAYER_ENTERING_WORLD");
+
+-- Création du script déclenché par les évènements déclencheurs de EventFrame
+EventFrame:SetScript("OnEvent", function(self, event, ...)
+	if event == "PLAYER_ENTERING_WORLD" then
+		InitializeWST();
+	end
+end)
+
+
+
+-- ====================
+-- Fonctions de l'addOn
+-- ====================
+
+-- InitializeWST() : Initialise l'addOn
+function InitializeWST()
+	-- HideMainFrame();
+	-- ButtonPlay:Disable();
+	ButtonStop:Disable();
+	musicselected = "Sound\\Music\\ZoneMusic\\Naxxramas\\NaxxramasSpiderWing1.mp3";
+end
+
+-- ShowMainFrame() : Affiche la fenêtre
+function ShowMainFrame()
 	if(MainFrame:IsShown()) then
-		MainFrame_Hide();
+		HideMainFrame();
 		PlayCloseSound();
 	else
 		ShowUIPanel(MainFrame);
@@ -14,26 +50,67 @@ function MainFrame_Show()
 	end
 end
 
--- MainFrame_Close() : cache la fenêtre
-function MainFrame_Hide()
+-- HideMainFrame() : Cache la fenêtre
+function HideMainFrame()
 	HideUIPanel(MainFrame);
 	PlaySound("igCharacterInfoClose");
 end
 
--- PlayCloseSound() : joue le son de fermeture de la fenêtre
-function PlayCloseSound()
-	PlaySound("igCharacterInfoClose");
-end
-
--- PlayOpenSound() : joue le son d'ouverture de la fenêtre
+-- PlayOpenSound() : Joue le son d'ouverture de la fenêtre
 function PlayOpenSound()
 	PlaySound("igCharacterInfoOpen");
 end
 
--- PlayButtonSound() : joue le son d'un bouton actionné
+-- PlayCloseSound() : Joue le son de fermeture de la fenêtre
+function PlayCloseSound()
+	PlaySound("igCharacterInfoClose");
+end
+
+-- PlayButtonSound() : Joue le son d'un bouton actionné
 function PlayButtonSound()
 	PlaySound("UChatScrollButton");
 end
+
+-- EnableButtonPlay() : Rend le bouton Jouer utilisable
+function EnableButtonPlay()
+	ButtonPlay:Enable();
+end
+
+-- DisableButtonPlay() : Rend le bouton Jouer inutilisable
+function DisableButtonPlay()
+	ButtonPlay:Disable();
+end
+
+-- EnableButtonStop() : Rend le bouton Stop utilisable
+function EnableButtonStop()
+	ButtonStop:Enable();
+end
+
+-- DisableButtonStop() : Rend le bouton Stop inutilisable
+function DisableButtonStop()
+	ButtonStop:Disable();
+end
+
+-- PlayMusicFunction() : Joue la musique sélectionnée par l'utilisateur
+function PlayMusicFunction()
+	PlayMusic(musicselected, "Ambience");
+end
+
+-- StopMusicFunction() : Arrête la musique en cours de lecture
+function StopMusicFunction()
+	StopMusic();
+end
+
+-- SetMusicTitle(string) : Définit le titre de la musique en cours de lecture
+function SetMusicTitle(title)
+	StringMusiqueEnCours:SetText(title);
+end
+
+-- ClearMusicTitle() : Efface le nom de la musique en cours de lecture
+function ClearMusicTitle()
+	StringMusiqueEnCours:SetText("---");
+end
+
 
 
 -- ==========================
@@ -53,38 +130,47 @@ SLASH_SlashCmd_6 = "/wowost"
 
 SlashCmdList["SlashCmd_"] = function(msg)
 	if(msg:trim() == "open" or msg:trim() == "run") then
-		MainFrame_Show();
+		ShowMainFrame();
 	elseif(msg:trim() == "close" or msg:trim() == "hide") then
-		MainFrame_Hide();
+		HideMainFrame();
 	elseif(msg:trim() == "") then
-		MainFrame_Show();
+		ShowMainFrame();
 	else
 		print("WoW_SoundTrack : cette commande (\""..msg.."\") n'existe pas.");
 	end
 end
 
--- ==========================================
--- Fonctions de lecture et d'arrêt de musique
--- ==========================================
 
-local musicselected = "Sound\\Music\\ZoneMusic\\Naxxramas\\NaxxramasSpiderWing1.mp3"
 
--- PlayMusicFunction() : joue la musique sélectionnée
-function PlayMusicFunction()
-	PlayMusic(musicselected, "Ambience");
+-- ===================================================
+-- Fonctions appelées lors de l'activation des boutons
+-- ===================================================
+
+-- ButtonPlayFunction() : Appelé lors d'une activation du bouton Jouer
+function ButtonPlayFunction()
+	PlayMusicFunction();
 	PlayButtonSound();
+	DisableButtonPlay();
+	EnableButtonStop();
+	SetMusicTitle("Naxxramas - Le Quartier des Arachniques");
 end
 
--- StopMusicFunction() : arrête la musique en train d'être jouée
-function StopMusicFunction()
-	StopMusic();
-	PlayButtonSound()
+-- ButtonStopFunction() : Appelé lors d'une activation du bouton Arrêter
+function ButtonStopFunction()
+	StopMusicFunction();
+	PlayButtonSound();
+	EnableButtonPlay();
+	DisableButtonStop();
+	ClearMusicTitle();
+end
+
+-- ButtonCloseFunction() : Appelé lors d'une activation du bouton Fermer
+function ButtonCloseFunction()
+	HideMainFrame();
+	PlayCloseSound();
 end
 
 -- =================================
-
-
-
 
 
 
