@@ -17,13 +17,14 @@ local EventFrame = CreateFrame("Frame");
 
 -- Création des évènements déclencheurs de EventFrame
 EventFrame:RegisterEvent("PLAYER_ENTERING_WORLD");
+EventFrame:SetScript("OnEvent", EventFunction);
 
 -- Création du script déclenché par les évènements déclencheurs de EventFrame
-EventFrame:SetScript("OnEvent", function(self, event, ...)
+function EventFunction(self, event, ...)
 	if event == "PLAYER_ENTERING_WORLD" then
 		InitializeWST();
 	end
-end)
+end
 
 
 
@@ -33,10 +34,16 @@ end)
 
 -- InitializeWST() : Initialise l'addOn
 function InitializeWST()
-	-- HideMainFrame();
-	-- ButtonPlay:Disable();
+	-- HideMainFrame(); -- TODO: ligne à décommenter
+	-- ButtonPlay:Disable(); -- TODO: ligne à décommenter
 	ButtonStop:Disable();
-	musicselected = "Sound\\Music\\ZoneMusic\\Naxxramas\\NaxxramasSpiderWing1.mp3";
+	musicselected = "Sound\\Music\\ZoneMusic\\Naxxramas\\NaxxramasSpiderWing1.mp3"; -- TODO: ligne à enlever
+	UpdateSoundTrackList();
+end
+
+-- UpdateSundTrackList() : Recherche dans les dossiers du jeu la liste des musiques
+function UpdateSoundTrackList()
+	-- TODO: Algorithme à ajouter
 end
 
 -- ShowMainFrame() : Affiche la fenêtre
@@ -121,12 +128,12 @@ end
 -- "/ws open" : ouvre ou ferme la fenêtre en fonction de son état
 -- "/ws close" : ferme la fenêtre si elle est ouverte
 
-SLASH_SlashCmd_1 = "/ws"
-SLASH_SlashCmd_2 = "/wst"
-SLASH_SlashCmd_3 = "/wost"
-SLASH_SlashCmd_4 = "/wows"
-SLASH_SlashCmd_5 = "/wowst"
-SLASH_SlashCmd_6 = "/wowost"
+SLASH_SlashCmd_1 = "/ws";
+SLASH_SlashCmd_2 = "/wst";
+SLASH_SlashCmd_3 = "/wost";
+SLASH_SlashCmd_4 = "/wows";
+SLASH_SlashCmd_5 = "/wowst";
+SLASH_SlashCmd_6 = "/wowost";
 
 SlashCmdList["SlashCmd_"] = function(msg)
 	if(msg:trim() == "open" or msg:trim() == "run") then
@@ -152,7 +159,7 @@ function ButtonPlayFunction()
 	PlayButtonSound();
 	DisableButtonPlay();
 	EnableButtonStop();
-	SetMusicTitle("Naxxramas - Le Quartier des Arachniques");
+	SetMusicTitle("Naxxramas - Le Quartier des Arachniques"); -- TODO: à remplacer par la variable musicselected
 end
 
 -- ButtonStopFunction() : Appelé lors d'une activation du bouton Arrêter
