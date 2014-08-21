@@ -193,60 +193,90 @@
 					</Offset>
 				</Anchor>
 			</Anchors>
+			<Scripts>
+				<OnClick> ButtonListFunction(1); </OnClick>
+			</Scripts>
 		</Button>
 
 		<Button name="MyModEntry2" inherits="MyModEntryTemplate">
 			<Anchors>
 				<Anchor point="TOPLEFT" relativeTo="MyModEntry1" relativePoint="BOTTOMLEFT"/>
 			</Anchors>
+			<Scripts>
+				<OnClick> ButtonListFunction(2); </OnClick>
+			</Scripts>
 		</Button>
 
 		<Button name="MyModEntry3" inherits="MyModEntryTemplate">
 			<Anchors>
 				<Anchor point="TOPLEFT" relativeTo="MyModEntry2" relativePoint="BOTTOMLEFT"/>
 			</Anchors>
+			<Scripts>
+				<OnClick> ButtonListFunction(3); </OnClick>
+			</Scripts>
 		</Button>
 
 		<Button name="MyModEntry4" inherits="MyModEntryTemplate">
 			<Anchors>
 				<Anchor point="TOPLEFT" relativeTo="MyModEntry3" relativePoint="BOTTOMLEFT"/>
 			</Anchors>
+			<Scripts>
+				<OnClick> ButtonListFunction(4); </OnClick>
+			</Scripts>
 		</Button>
 
 		<Button name="MyModEntry5" inherits="MyModEntryTemplate">
 			<Anchors>
 				<Anchor point="TOPLEFT" relativeTo="MyModEntry4" relativePoint="BOTTOMLEFT"/>
 			</Anchors>
+			<Scripts>
+				<OnClick> ButtonListFunction(5); </OnClick>
+			</Scripts>
 		</Button>
 
 		<Button name="MyModEntry6" inherits="MyModEntryTemplate">
 			<Anchors>
 				<Anchor point="TOPLEFT" relativeTo="MyModEntry5" relativePoint="BOTTOMLEFT"/>
 			</Anchors>
+			<Scripts>
+				<OnClick> ButtonListFunction(6); </OnClick>
+			</Scripts>
 		</Button>
 
 		<Button name="MyModEntry7" inherits="MyModEntryTemplate">
 			<Anchors>
 				<Anchor point="TOPLEFT" relativeTo="MyModEntry6" relativePoint="BOTTOMLEFT"/>
 			</Anchors>
+			<Scripts>
+				<OnClick> ButtonListFunction(7); </OnClick>
+			</Scripts>
 		</Button>
 
 		<Button name="MyModEntry8" inherits="MyModEntryTemplate">
 			<Anchors>
 				<Anchor point="TOPLEFT" relativeTo="MyModEntry7" relativePoint="BOTTOMLEFT"/>
 			</Anchors>
+			<Scripts>
+				<OnClick> ButtonListFunction(8); </OnClick>
+			</Scripts>
 		</Button>
 
 		<Button name="MyModEntry9" inherits="MyModEntryTemplate">
 			<Anchors>
 				<Anchor point="TOPLEFT" relativeTo="MyModEntry8" relativePoint="BOTTOMLEFT"/>
 			</Anchors>
+			<Scripts>
+				<OnClick> ButtonListFunction(9); </OnClick>
+			</Scripts>
 		</Button>
 
 		<Button name="MyModEntry10" inherits="MyModEntryTemplate">
 			<Anchors>
 				<Anchor point="TOPLEFT" relativeTo="MyModEntry9" relativePoint="BOTTOMLEFT"/>
 			</Anchors>
+			<Scripts>
+				<OnClick> ButtonListFunction(10); </OnClick>
+			</Scripts>
 		</Button>
 
 	</Frames>

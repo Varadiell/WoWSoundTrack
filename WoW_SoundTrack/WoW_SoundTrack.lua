@@ -3,9 +3,8 @@
 -- Variables locales de l'addOn
 -- ============================
 
--- Musique définie directement en attendant d'être meilleur en LUA !
-local musicselected = "";
-
+local musicselectedtitle = "";
+local musicselectednumber = 0;
 
 
 -- ===================================================
@@ -35,15 +34,14 @@ end
 -- InitializeWST() : Initialise l'addOn
 function InitializeWST()
 	-- HideMainFrame(); -- TODO: ligne à décommenter
-	-- ButtonPlay:Disable(); -- TODO: ligne à décommenter
-	ButtonStop:Disable();
-	musicselected = "Sound\\Music\\ZoneMusic\\Naxxramas\\NaxxramasSpiderWing1.mp3"; -- TODO: ligne à enlever
+	DisableButtonPlay(); -- TODO: ligne à décommenter
+	DisableButtonStop();
 	UpdateSoundTrackList();
 end
 
 -- UpdateSundTrackList() : Recherche dans les dossiers du jeu la liste des musiques
 function UpdateSoundTrackList()
-	-- TODO: Algorithme à ajouter
+	-- TODO: Algorithme à ajouter ?
 end
 
 -- ShowMainFrame() : Affiche la fenêtre
@@ -100,7 +98,7 @@ end
 
 -- PlayMusicFunction() : Joue la musique sélectionnée par l'utilisateur
 function PlayMusicFunction()
-	PlayMusic(musicselected, "Ambience");
+	PlayMusic(MusicLocation[musicselectednumber], "Ambience");
 end
 
 -- StopMusicFunction() : Arrête la musique en cours de lecture
@@ -159,7 +157,7 @@ function ButtonPlayFunction()
 	PlayButtonSound();
 	DisableButtonPlay();
 	EnableButtonStop();
-	SetMusicTitle("Naxxramas - Le Quartier des Arachniques"); -- TODO: à remplacer par la variable musicselected
+	SetMusicTitle(musicselectedtitle); -- TODO: à remplacer par la variable musicselected
 end
 
 -- ButtonStopFunction() : Appelé lors d'une activation du bouton Arrêter
@@ -177,25 +175,50 @@ function ButtonCloseFunction()
 	PlayCloseSound();
 end
 
+-- ButtonListFunction(Int n) : Appelé lors d'une activation d'un des 10 boutons de la liste de sélection
+function ButtonListFunction(n)
+	musicselectednumber = n + FauxScrollFrame_GetOffset(MyModScrollBar);
+	musicselectedtitle = MyModData[musicselectednumber];
+	EnableButtonPlay();
+	PlayButtonSound();
+end
+
 -- =================================
 
 
 
 MyModData = {}
+MusicLocation = {}
 
 function MyMod_OnLoad()
   local nb = 1
   for i=1,50 do
-    MyModData[i] = "Test "..nb
+    MyModData[i] = "Naxxramas - Le Quartier Militaire "..nb
 	nb = nb + 1
   end
+  MyModData[1] = "Glue Screen - The Burning Crusade (main theme)"
+  MyModData[2] = "Glue Screen - Lament of the Highborne"
+  MyModData[3] = "Glue Screen - Wrath of the Lich King (main title)"
+  MyModData[4] = "Glue Screen - World of Warcraft (main theme)"
+  MyModData[5] = "City Music - Darnassus (intro)"
+  MyModData[6] = "City Music - Darnassus (walking 1)"
+  MyModData[7] = "City Music - Darnassus (walking 2)"
+  MyModData[8] = "City Music - Darnassus (walking 3)"
   MyModScrollBar:Show()
+  MusicLocation[1] = "Sound\\Music\\GlueScreenMusic\\BC_main_theme.mp3"
+  MusicLocation[2] = "Sound\\Music\\GlueScreenMusic\\BCCredits_Lament_of_the_Highborne.mp3"
+  MusicLocation[3] = "Sound\\Music\\GlueScreenMusic\\WotLK_main_title.mp3"
+  MusicLocation[4] = "Sound\\Music\\GlueScreenMusic\\wow_main_theme.mp3"
+  MusicLocation[5] = "Sound\\Music\\CityMusic\\Darnassus\\Darnassus Intro.mp3"
+  MusicLocation[6] = "Sound\\Music\\CityMusic\\Darnassus\\Darnassus Walking 1.mp3"
+  MusicLocation[7] = "Sound\\Music\\CityMusic\\Darnassus\\Darnassus Walking 2.mp3"
+  MusicLocation[8] = "Sound\\Music\\CityMusic\\Darnassus\\Darnassus Walking 3.mp3"
 end
 
 function MyModScrollBar_Update()
-  local line; -- 1 through 5 of our window to scroll
-  local lineplusoffset; -- an index into our data calculated from the scroll offset
-  FauxScrollFrame_Update(MyModScrollBar,50,10,16); -- Scrollbarconcernée / nbboutons / nbaffichagesfinscroll / tailleboutons
+  local line; -- 10 lignes à afficher
+  local lineplusoffset; -- Permettra d'afficher le texte d'un bouton grâce au numéro de ligne (de 1 à 10) et au décalage de l'affichage
+  FauxScrollFrame_Update(MyModScrollBar,50,10,16); -- Scrollbarconcernée / nblignestotal / nblignesàafficher / tailleboutons
   for line=1,10 do
     lineplusoffset = line + FauxScrollFrame_GetOffset(MyModScrollBar);
     if lineplusoffset <= 50 then
