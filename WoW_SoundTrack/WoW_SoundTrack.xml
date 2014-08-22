@@ -40,6 +40,16 @@
 				</Anchors>
 			</FontString>
 		</Layer>
+		<Layer level="BACKGROUND">
+			<Texture name="parent_Portrait" parentKey="portrait" file="Interface/ICONS/Achievement_General">
+			<Size x="51" y="51"/>
+			<Anchors>
+				<Anchor point="TOPLEFT">
+					<Offset x="7" y="-7"/>
+				</Anchor>
+			</Anchors>
+			</Texture>
+		</Layer>
 	</Layers>
 	<Frames>
 		<Button name="CloseButton" inherits="UIPanelCloseButton">

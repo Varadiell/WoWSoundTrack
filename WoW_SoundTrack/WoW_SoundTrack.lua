@@ -33,6 +33,7 @@ end
 
 -- InitializeWST() : Initialise l'addOn
 function InitializeWST()
+	SetPortraitToTexture(MainFrame.portrait, "Interface/ICONS/Achievement_General")
 	-- HideMainFrame(); -- TODO: ligne à décommenter
 	DisableButtonPlay(); -- TODO: ligne à décommenter
 	DisableButtonStop();
