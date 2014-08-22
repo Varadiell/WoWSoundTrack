@@ -4,7 +4,9 @@
 
 <Frame name="MainFrame" parent="IUParent" toplevel="true" enableMouse="true" movable="true" hidden="false">
 	<Size x="314" y="391" />
-	<Anchor point="CENTER" />
+	<Anchors>
+		<Anchor point="CENTER" />
+	</Anchors>
 	<Scripts>
 		<OnLoad>self:RegisterForDrag("LeftButton");</OnLoad>
 		<OnDragStart>self:StartMoving();</OnDragStart>
