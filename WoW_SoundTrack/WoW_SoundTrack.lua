@@ -113,7 +113,7 @@ end
 
 -- ClearMusicTitle() : Efface le nom de la musique en cours de lecture
 function ClearMusicTitle()
-	StringMusiqueEnCours:SetText("---");
+	StringMusiqueEnCours:SetText("");
 end
 
 
@@ -175,7 +175,7 @@ function ButtonCloseFunction()
 	PlayCloseSound();
 end
 
--- ButtonListFunction(Int n) : Appelé lors d'une activation d'un des 10 boutons de la liste de sélection
+-- ButtonListFunction(Int n) : Appelé lors d'une activation d'un des 13 boutons de la liste de sélection
 function ButtonListFunction(n)
 	musicselectednumber = n + FauxScrollFrame_GetOffset(MyModScrollBar);
 	musicselectedtitle = MyModData[musicselectednumber];
@@ -196,10 +196,10 @@ function MyMod_OnLoad()
     MyModData[i] = "Naxxramas - Le Quartier Militaire "..nb
 	nb = nb + 1
   end
-  MyModData[1] = "Glue Screen - The Burning Crusade (main theme)"
-  MyModData[2] = "Glue Screen - Lament of the Highborne"
-  MyModData[3] = "Glue Screen - Wrath of the Lich King (main title)"
-  MyModData[4] = "Glue Screen - World of Warcraft (main theme)"
+  MyModData[1] = "The Burning Crusade (main theme)"
+  MyModData[2] = "Lament of the Highborne"
+  MyModData[3] = "Wrath of the Lich King (main title)"
+  MyModData[4] = "World of Warcraft (main theme)"
   MyModData[5] = "City Music - Darnassus (intro)"
   MyModData[6] = "City Music - Darnassus (walking 1)"
   MyModData[7] = "City Music - Darnassus (walking 2)"
@@ -216,10 +216,10 @@ function MyMod_OnLoad()
 end
 
 function MyModScrollBar_Update()
-  local line; -- 10 lignes à afficher
-  local lineplusoffset; -- Permettra d'afficher le texte d'un bouton grâce au numéro de ligne (de 1 à 10) et au décalage de l'affichage
-  FauxScrollFrame_Update(MyModScrollBar,50,10,16); -- Scrollbarconcernée / nblignestotal / nblignesàafficher / tailleboutons
-  for line=1,10 do
+  local line; -- 13 lignes à afficher
+  local lineplusoffset; -- Permettra d'afficher le texte d'un bouton grâce au numéro de ligne (de 1 à 13) et au décalage de l'affichage
+  FauxScrollFrame_Update(MyModScrollBar,62,13,16); -- Scrollbarconcernée / nblignestotal / nblignesàafficher / tailleboutons
+  for line=1,13 do
     lineplusoffset = line + FauxScrollFrame_GetOffset(MyModScrollBar);
     if lineplusoffset <= 50 then
       getglobal("MyModEntry"..line):SetText(MyModData[lineplusoffset]);

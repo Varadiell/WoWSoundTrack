@@ -2,79 +2,26 @@
 
 <Script file="WoW_SoundTrack.lua" />
 
-<Frame name="MainFrame" parent="UIParent" toplevel="true" enableMouse="true" movable="true" hidden="false">
-	<Size>
-		<AbsDimension x="800" y="250" />
-	</Size>
-	<Anchors>
-		<Anchor point="CENTER" />
-	</Anchors>
+<Frame name="MainFrame" parent="IUParent" toplevel="true" enableMouse="true" movable="true" hidden="false">
+	<Size x="314" y="391" />
+	<Anchor point="CENTER" />
 	<Scripts>
 		<OnLoad>self:RegisterForDrag("LeftButton");</OnLoad>
 		<OnDragStart>self:StartMoving();</OnDragStart>
 		<OnDragStop>self:StopMovingOrSizing();</OnDragStop>
 	</Scripts>
-	<Backdrop edgeFile="Interface\DialogFrame\UI-DialogBox-Gold-Border" tile="true">
-		<BackgroundInsets>
-			<AbsInset left="11" right="12" top="12" bottom="11"/>
-		</BackgroundInsets>
-		<TileSize>
-			<AbsValue val="32"/>
-		</TileSize>
-		<EdgeSize>
-			<AbsValue val="32"/>
-		</EdgeSize>
-	</Backdrop>
 	<Layers>
 		<Layer level="BACKGROUND">
-			<Texture file="Interface\AchievementFrame\UI-Achievement-Parchment-Horizontal" parentKey="background">
+			<Texture file="Interface/ITEMSOCKETINGFRAME/UI-ItemSocketingFrame" parentKey="background">
 				<Anchors>
 					<Anchor point="TOPLEFT">
 						<Offset>
-							<AbsDimension x="3" y="-3"/>
+							<AbsDimension x="0" y="0"/>
 						</Offset>
 					</Anchor>
 					<Anchor point="BOTTOMRIGHT">
 						<Offset>
-							<AbsDimension x="-3" y="3"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-			</Texture>						
-		</Layer>
-		<Layer level="ARTWORK">
-			<Texture file="Interface\DialogFrame\UI-DialogBox-Gold-Header">
-				<Anchors>
-					<Anchor point="TOP">
-						<Offset>
-							<AbsDimension x="0" y="12"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-			</Texture>
-			<Texture file="Interface/ACHIEVEMENTFRAME/UI-Achievement-Reward-Background">
-				<Anchors>
-					<Anchor point="TOPLEFT">
-						<Offset>
-							<AbsDimension x="20" y="-40"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-			</Texture>
-			<Texture file="Interface/ACHIEVEMENTFRAME/UI-Achievement-Reward-Background">
-				<Anchors>
-					<Anchor point="TOPRIGHT">
-						<Offset>
-							<AbsDimension x="140" y="-40"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-			</Texture>
-			<Texture file="Interface/ACHIEVEMENTFRAME/UI-Achievement-Reward-Background">
-				<Anchors>
-					<Anchor point="BOTTOMRIGHT">
-						<Offset>
-							<AbsDimension x="140" y="90"/>
+							<AbsDimension x="148" y="-68"/>
 						</Offset>
 					</Anchor>
 				</Anchors>
@@ -85,34 +32,7 @@
 				<Anchors>
 					<Anchor point="TOP">
 						<Offset>
-							<AbsDimension x="0" y="-3"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-			</FontString>
-			<FontString inherits="GameFontHighlightMedium" text="Choisissez une musique à jouer :">
-				<Anchors>
-					<Anchor point="TOPLEFT">
-						<Offset>
-							<AbsDimension x="81" y="-42"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-			</FontString>
-			<FontString inherits="GameFontHighlightMedium" text="Lecture en cours">
-				<Anchors>
-					<Anchor point="TOPRIGHT">
-						<Offset>
-							<AbsDimension x="-140" y="-42"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-			</FontString>
-			<FontString inherits="GameFontHighlightMedium" text="Commandes">
-				<Anchors>
-					<Anchor point="BOTTOMRIGHT">
-						<Offset>
-							<AbsDimension x="-152" y="105"/>
+							<AbsDimension x="18" y="-18"/>
 						</Offset>
 					</Anchor>
 				</Anchors>
@@ -121,50 +41,40 @@
 	</Layers>
 	<Frames>
 		<Button name="CloseButton" inherits="UIPanelCloseButton">
+			<Size x="28" y="28" />
 			<Anchors>
-				<Anchor point="TOPRIGHT" x="-3" y="-3"/>
+				<Anchor point="TOPRIGHT" x="4" y="-9"/>
 			</Anchors>
 			<Scripts>
 				<OnClick> ButtonCloseFunction(); </OnClick>
 			</Scripts>
 		</Button>
+
 	</Frames>
 </Frame>
 
 
-
 <Button name="MyModEntryTemplate" virtual="true">
 	<Size>
-		<AbsDimension x="340" y="16" />
+		<AbsDimension x="240" y="16" />
 	</Size>
-	<NormalFont style="GameFontHighlightLeft"/>
+	<NormalFont style="GameFontHighlightSmallLeft"/>
+	<HighlightFont style="GameFontNormalSmallLeft"/>
 </Button>
-
 
 
 <Frame name="MyMod" parent="MainFrame" enableMouse="true" movable="true">
 	<Size>
-		<AbsDimension x="380" y="176"/>
+		<AbsDimension x="278" y="247"/>
 	</Size>
 	<Anchors>
-		<Anchor point="BOTTOMLEFT" x="15" y="15"/>
+		<Anchor point="TOPLEFT" x="25" y="-72"/>
 	</Anchors>
 	<Scripts>
 		<OnLoad>
 			MyMod_OnLoad()
 		</OnLoad>
 	</Scripts>
-	<Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Gold-Border" tile="true">
-		<BackgroundInsets>
-			<AbsInset left="4" right="4" top="4" bottom="4" />
-		</BackgroundInsets>
-		<TileSize>
-			<AbsValue val="16" />
-		</TileSize>
-		<EdgeSize>
-			<AbsValue val="16" />
-		</EdgeSize>
-	</Backdrop>
 	<Frames>
 		<ScrollFrame name="MyModScrollBar" inherits="FauxScrollFrameTemplate" hidden="true">
 			<Anchors>
@@ -189,7 +99,7 @@
 			<Anchors>
 				<Anchor point="TOPLEFT" relativeTo="MyModScrollBar" relativePoint="TOPLEFT">
 					<Offset>
-						<AbsDimension x="8" y="0"/>
+						<AbsDimension x="8" y="-12"/>
 					</Offset>
 				</Anchor>
 			</Anchors>
@@ -279,18 +189,45 @@
 			</Scripts>
 		</Button>
 
+		<Button name="MyModEntry11" inherits="MyModEntryTemplate">
+			<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="MyModEntry10" relativePoint="BOTTOMLEFT"/>
+			</Anchors>
+			<Scripts>
+				<OnClick> ButtonListFunction(11); </OnClick>
+			</Scripts>
+		</Button>
+		
+		<Button name="MyModEntry12" inherits="MyModEntryTemplate">
+			<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="MyModEntry11" relativePoint="BOTTOMLEFT"/>
+			</Anchors>
+			<Scripts>
+				<OnClick> ButtonListFunction(12); </OnClick>
+			</Scripts>
+		</Button>
+
+		<Button name="MyModEntry13" inherits="MyModEntryTemplate">
+			<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="MyModEntry12" relativePoint="BOTTOMLEFT"/>
+			</Anchors>
+			<Scripts>
+				<OnClick> ButtonListFunction(13); </OnClick>
+			</Scripts>
+		</Button>
+
 	</Frames>
 	
 </Frame>
 
 
 
-<Frame name="FrameMusiqueEnCours" parent="MainFrame" enableMouse="true" movable="true">
+<Frame name="FrameMusiqueEnCours" parent="MainFrame">
 	<Size>
-		<AbsDimension x="370" y="30"/>
+		<AbsDimension x="243" y="30"/>
 	</Size>
 	<Anchors>
-		<Anchor point="TOP" x="195" y="-59"/>
+		<Anchor point="TOPLEFT" x="66" y="-35"/>
 	</Anchors>
 	<Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Gold-Border" tile="true">
 		<BackgroundInsets>
@@ -305,7 +242,7 @@
 	</Backdrop>	
 	<Layers>
 		<Layer level="OVERLAY">
-			<FontString name="StringMusiqueEnCours" inherits="GameFontHighlightSmall" text="Choisissez une musique à jouer depuis la liste de gauche">
+			<FontString name="StringMusiqueEnCours" inherits="GameFontNormalSmall" text="">
 				<Anchors>
 					<Anchor point="CENTER">
 						<Offset>
@@ -320,28 +257,14 @@
 
 
 
-<Button name="ButtonClose" parent="MainFrame" inherits="OptionsButtonTemplate" text="Fermer">
-	<Anchors>
-		<Anchor point="BOTTOMRIGHT">
-			<Offset>
-				<AbsDimension x="-12" y="12"/>
-			</Offset>
-		</Anchor>
-	</Anchors>
-	<Scripts>
-		<OnClick> ButtonCloseFunction(); </OnClick>
-	</Scripts>
-</Button>
-
-
 <Button name="ButtonPlay" parent="MainFrame" inherits="OptionsButtonTemplate" text="Jouer">
 	<Size>
 		<AbsDimension x="120" y="24" />
 	</Size>
 	<Anchors>
-		<Anchor point="BOTTOMRIGHT">
+		<Anchor point="BOTTOMLEFT">
 			<Offset>
-				<AbsDimension x="-198" y="65"/>
+				<AbsDimension x="35" y="35"/>
 			</Offset>
 		</Anchor>
 	</Anchors>
@@ -356,14 +279,29 @@
 		<AbsDimension x="120" y="24" />
 	</Size>
 	<Anchors>
-		<Anchor point="BOTTOMRIGHT">
+		<Anchor point="BOTTOMLEFT">
 			<Offset>
-				<AbsDimension x="-75" y="65"/>
+				<AbsDimension x="170" y="35"/>
 			</Offset>
 		</Anchor>
 	</Anchors>
 	<Scripts>
 		<OnClick> ButtonStopFunction() </OnClick>
+	</Scripts>
+</Button>
+
+
+<Button name="ButtonClose" parent="MainFrame" inherits="OptionsButtonTemplate" text="Fermer">
+	<Size x="153" y="21" />
+	<Anchors>
+		<Anchor point="BOTTOMLEFT">
+			<Offset>
+				<AbsDimension x="161" y="1"/>
+			</Offset>
+		</Anchor>
+	</Anchors>
+	<Scripts>
+		<OnClick> ButtonCloseFunction(); </OnClick>
 	</Scripts>
 </Button>
 
