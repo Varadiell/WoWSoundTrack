@@ -31,11 +31,10 @@ end
 -- Fonctions de l'addOn
 -- ====================
 
-
 -- InitializeWST() : Initialise l'addOn
 function InitializeWST()
 	SetPortraitToTexture(MainFrame.portrait, "Interface/ICONS/Achievement_General")
-	-- HideMainFrame(); -- TODO: ligne à décommenter
+	ShowMainFrame(); -- TODO: ligne à enlever
 	DisableButtonPlay(); -- TODO: ligne à décommenter
 	DisableButtonStop();
 	UpdateSoundTrackList();
@@ -177,7 +176,7 @@ function ButtonCloseFunction()
 	PlayCloseSound();
 end
 
--- ButtonListFunction(Int n) : Appelé lors d'une activation d'un des 13 boutons de la liste de sélection
+-- ButtonListFunction(Int n) : Appelé lors d'une activation d'un des 14 boutons de la liste de sélection
 function ButtonListFunction(n)
 	musicselectednumber = n + FauxScrollFrame_GetOffset(MyModScrollBar);
 	musicselectedtitle = MusicData[1][musicselectednumber];
@@ -196,10 +195,10 @@ function MyMod_OnLoad()
 end
 
 function MyModScrollBar_Update()
-  local line; -- 13 lignes à afficher
-  local lineplusoffset; -- Permettra d'afficher le texte d'un bouton grâce au numéro de ligne (de 1 à 13) et au décalage de l'affichage
-  FauxScrollFrame_Update(MyModScrollBar,#SoundFiles_Paths,13,16); -- Scrollbarconcernée / nblignestotal / nblignesàafficher / tailleboutons
-  for line=1,13 do
+  local line; -- 14 lignes à afficher
+  local lineplusoffset; -- Permettra d'afficher le texte d'un bouton grâce au numéro de ligne (de 1 à 14) et au décalage de l'affichage
+  FauxScrollFrame_Update(MyModScrollBar,#SoundFiles_Paths,14,16); -- Scrollbarconcernée / nblignestotal / nblignesàafficher / tailleboutons
+  for line=1,14 do
     lineplusoffset = line + FauxScrollFrame_GetOffset(MyModScrollBar);
     if lineplusoffset <= #SoundFiles_Paths then
       getglobal("MyModEntry"..line):SetText(MusicData[1][lineplusoffset]);
