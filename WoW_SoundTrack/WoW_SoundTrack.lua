@@ -6,7 +6,6 @@
 local musicselectedtitle = "";
 local musicselectednumber = 0;
 
-
 -- ===================================================
 -- Création des évènements et des scripts déclencheurs
 -- ===================================================
@@ -30,6 +29,7 @@ end
 -- ====================
 -- Fonctions de l'addOn
 -- ====================
+
 
 -- InitializeWST() : Initialise l'addOn
 function InitializeWST()
@@ -99,7 +99,7 @@ end
 
 -- PlayMusicFunction() : Joue la musique sélectionnée par l'utilisateur
 function PlayMusicFunction()
-	PlayMusic(MusicLocation[musicselectednumber], "Ambience");
+	PlayMusic(MusicData[musicselectednumber][2], "Ambience");
 end
 
 -- StopMusicFunction() : Arrête la musique en cours de lecture
@@ -179,51 +179,39 @@ end
 -- ButtonListFunction(Int n) : Appelé lors d'une activation d'un des 13 boutons de la liste de sélection
 function ButtonListFunction(n)
 	musicselectednumber = n + FauxScrollFrame_GetOffset(MyModScrollBar);
-	musicselectedtitle = MyModData[musicselectednumber];
+	musicselectedtitle = MusicData[musicselectednumber][1];
 	EnableButtonPlay();
 	PlayButtonSound();
 end
 
 -- =================================
 
-
-
-MyModData = {}
-MusicLocation = {}
+MusicData = {}
 
 function MyMod_OnLoad()
-  local nb = 1
-  for i=1,50 do
-    MyModData[i] = "Naxxramas - Le Quartier Militaire "..nb
-	nb = nb + 1
-  end
-  MyModData[1] = "The Burning Crusade (main theme)"
-  MyModData[2] = "Lament of the Highborne"
-  MyModData[3] = "Wrath of the Lich King (main title)"
-  MyModData[4] = "World of Warcraft (main theme)"
-  MyModData[5] = "City Music - Darnassus (intro)"
-  MyModData[6] = "City Music - Darnassus (walking 1)"
-  MyModData[7] = "City Music - Darnassus (walking 2)"
-  MyModData[8] = "City Music - Darnassus (walking 3)"
+
+	MusicData = {
+		{"The Burning Crusade (main theme)", "Sound\\Music\\GlueScreenMusic\\BC_main_theme.mp3"},
+		{"Lament of the Highborne", "Sound\\Music\\GlueScreenMusic\\BCCredits_Lament_of_the_Highborne.mp3"},
+		{"Wrath of the Lich King (main title)", "Sound\\Music\\GlueScreenMusic\\WotLK_main_title.mp3"},
+		{"World of Warcraft (main theme)", "Sound\\Music\\GlueScreenMusic\\wow_main_theme.mp3"},
+		{"City Music - Darnassus (intro)", "Sound\\Music\\CityMusic\\Darnassus\\Darnassus Intro.mp3"},
+		{"City Music - Darnassus (walking 1)", "Sound\\Music\\CityMusic\\Darnassus\\Darnassus Walking 1.mp3"},
+		{"City Music - Darnassus (walking 2)", "Sound\\Music\\CityMusic\\Darnassus\\Darnassus Walking 2.mp3"},
+		{"City Music - Darnassus (walking 3)", "Sound\\Music\\CityMusic\\Darnassus\\Darnassus Walking 3.mp3"},
+	}
+
   MyModScrollBar:Show()
-  MusicLocation[1] = "Sound\\Music\\GlueScreenMusic\\BC_main_theme.mp3"
-  MusicLocation[2] = "Sound\\Music\\GlueScreenMusic\\BCCredits_Lament_of_the_Highborne.mp3"
-  MusicLocation[3] = "Sound\\Music\\GlueScreenMusic\\WotLK_main_title.mp3"
-  MusicLocation[4] = "Sound\\Music\\GlueScreenMusic\\wow_main_theme.mp3"
-  MusicLocation[5] = "Sound\\Music\\CityMusic\\Darnassus\\Darnassus Intro.mp3"
-  MusicLocation[6] = "Sound\\Music\\CityMusic\\Darnassus\\Darnassus Walking 1.mp3"
-  MusicLocation[7] = "Sound\\Music\\CityMusic\\Darnassus\\Darnassus Walking 2.mp3"
-  MusicLocation[8] = "Sound\\Music\\CityMusic\\Darnassus\\Darnassus Walking 3.mp3"
 end
 
 function MyModScrollBar_Update()
   local line; -- 13 lignes à afficher
   local lineplusoffset; -- Permettra d'afficher le texte d'un bouton grâce au numéro de ligne (de 1 à 13) et au décalage de l'affichage
-  FauxScrollFrame_Update(MyModScrollBar,62,13,16); -- Scrollbarconcernée / nblignestotal / nblignesàafficher / tailleboutons
+  FauxScrollFrame_Update(MyModScrollBar,table.getn(MusicData),13,16); -- Scrollbarconcernée / nblignestotal / nblignesàafficher / tailleboutons
   for line=1,13 do
     lineplusoffset = line + FauxScrollFrame_GetOffset(MyModScrollBar);
-    if lineplusoffset <= 50 then
-      getglobal("MyModEntry"..line):SetText(MyModData[lineplusoffset]);
+    if lineplusoffset <= table.getn(MusicData) then
+      getglobal("MyModEntry"..line):SetText(MusicData[lineplusoffset][1]);
       getglobal("MyModEntry"..line):Show();
     else
       getglobal("MyModEntry"..line):Hide();
