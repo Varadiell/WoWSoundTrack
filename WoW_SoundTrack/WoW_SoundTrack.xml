@@ -67,7 +67,7 @@
 </Frame>
 
 
-<Button name="MyModEntryTemplate" virtual="true">
+<Button name="ButtonListTemplate" virtual="true">
 	<Size>
 		<AbsDimension x="240" y="16" />
 	</Size>
@@ -76,20 +76,15 @@
 </Button>
 
 
-<Frame name="MyMod" parent="MainFrame" enableMouse="true" movable="true">
+<Frame name="ScrollBarFrame" parent="MainFrame" enableMouse="true" movable="true">
 	<Size>
 		<AbsDimension x="278" y="247"/>
 	</Size>
 	<Anchors>
 		<Anchor point="TOPLEFT" x="25" y="-72"/>
 	</Anchors>
-	<Scripts>
-		<OnLoad>
-			MyMod_OnLoad()
-		</OnLoad>
-	</Scripts>
 	<Frames>
-		<ScrollFrame name="MyModScrollBar" inherits="FauxScrollFrameTemplate" hidden="true">
+		<ScrollFrame name="ScrollBarList" inherits="FauxScrollFrameTemplate" hidden="true">
 			<Anchors>
 				<Anchor point="TOPLEFT">
 					<Offset>
@@ -103,14 +98,13 @@
 				</Anchor>
 			</Anchors>
 			<Scripts>
-				<OnVerticalScroll>FauxScrollFrame_OnVerticalScroll(self, offset, 16, MyModScrollBar_Update);</OnVerticalScroll>
-				<OnShow>MyModScrollBar_Update()</OnShow>
+				<OnVerticalScroll>FauxScrollFrame_OnVerticalScroll(self, offset, 16, ScrollBarList_Update);</OnVerticalScroll>
 			</Scripts>
 		</ScrollFrame>
 
-		<Button name="MyModEntry1" inherits="MyModEntryTemplate">
+		<Button name="ButtonList1" inherits="ButtonListTemplate">
 			<Anchors>
-				<Anchor point="TOPLEFT" relativeTo="MyModScrollBar" relativePoint="TOPLEFT">
+				<Anchor point="TOPLEFT" relativeTo="ScrollBarList" relativePoint="TOPLEFT">
 					<Offset>
 						<AbsDimension x="8" y="-2"/>
 					</Offset>
@@ -121,117 +115,117 @@
 			</Scripts>
 		</Button>
 
-		<Button name="MyModEntry2" inherits="MyModEntryTemplate">
+		<Button name="ButtonList2" inherits="ButtonListTemplate">
 			<Anchors>
-				<Anchor point="TOPLEFT" relativeTo="MyModEntry1" relativePoint="BOTTOMLEFT"/>
+				<Anchor point="TOPLEFT" relativeTo="ButtonList1" relativePoint="BOTTOMLEFT"/>
 			</Anchors>
 			<Scripts>
 				<OnClick> ButtonListFunction(2); </OnClick>
 			</Scripts>
 		</Button>
 
-		<Button name="MyModEntry3" inherits="MyModEntryTemplate">
+		<Button name="ButtonList3" inherits="ButtonListTemplate">
 			<Anchors>
-				<Anchor point="TOPLEFT" relativeTo="MyModEntry2" relativePoint="BOTTOMLEFT"/>
+				<Anchor point="TOPLEFT" relativeTo="ButtonList2" relativePoint="BOTTOMLEFT"/>
 			</Anchors>
 			<Scripts>
 				<OnClick> ButtonListFunction(3); </OnClick>
 			</Scripts>
 		</Button>
 
-		<Button name="MyModEntry4" inherits="MyModEntryTemplate">
+		<Button name="ButtonList4" inherits="ButtonListTemplate">
 			<Anchors>
-				<Anchor point="TOPLEFT" relativeTo="MyModEntry3" relativePoint="BOTTOMLEFT"/>
+				<Anchor point="TOPLEFT" relativeTo="ButtonList3" relativePoint="BOTTOMLEFT"/>
 			</Anchors>
 			<Scripts>
 				<OnClick> ButtonListFunction(4); </OnClick>
 			</Scripts>
 		</Button>
 
-		<Button name="MyModEntry5" inherits="MyModEntryTemplate">
+		<Button name="ButtonList5" inherits="ButtonListTemplate">
 			<Anchors>
-				<Anchor point="TOPLEFT" relativeTo="MyModEntry4" relativePoint="BOTTOMLEFT"/>
+				<Anchor point="TOPLEFT" relativeTo="ButtonList4" relativePoint="BOTTOMLEFT"/>
 			</Anchors>
 			<Scripts>
 				<OnClick> ButtonListFunction(5); </OnClick>
 			</Scripts>
 		</Button>
 
-		<Button name="MyModEntry6" inherits="MyModEntryTemplate">
+		<Button name="ButtonList6" inherits="ButtonListTemplate">
 			<Anchors>
-				<Anchor point="TOPLEFT" relativeTo="MyModEntry5" relativePoint="BOTTOMLEFT"/>
+				<Anchor point="TOPLEFT" relativeTo="ButtonList5" relativePoint="BOTTOMLEFT"/>
 			</Anchors>
 			<Scripts>
 				<OnClick> ButtonListFunction(6); </OnClick>
 			</Scripts>
 		</Button>
 
-		<Button name="MyModEntry7" inherits="MyModEntryTemplate">
+		<Button name="ButtonList7" inherits="ButtonListTemplate">
 			<Anchors>
-				<Anchor point="TOPLEFT" relativeTo="MyModEntry6" relativePoint="BOTTOMLEFT"/>
+				<Anchor point="TOPLEFT" relativeTo="ButtonList6" relativePoint="BOTTOMLEFT"/>
 			</Anchors>
 			<Scripts>
 				<OnClick> ButtonListFunction(7); </OnClick>
 			</Scripts>
 		</Button>
 
-		<Button name="MyModEntry8" inherits="MyModEntryTemplate">
+		<Button name="ButtonList8" inherits="ButtonListTemplate">
 			<Anchors>
-				<Anchor point="TOPLEFT" relativeTo="MyModEntry7" relativePoint="BOTTOMLEFT"/>
+				<Anchor point="TOPLEFT" relativeTo="ButtonList7" relativePoint="BOTTOMLEFT"/>
 			</Anchors>
 			<Scripts>
 				<OnClick> ButtonListFunction(8); </OnClick>
 			</Scripts>
 		</Button>
 
-		<Button name="MyModEntry9" inherits="MyModEntryTemplate">
+		<Button name="ButtonList9" inherits="ButtonListTemplate">
 			<Anchors>
-				<Anchor point="TOPLEFT" relativeTo="MyModEntry8" relativePoint="BOTTOMLEFT"/>
+				<Anchor point="TOPLEFT" relativeTo="ButtonList8" relativePoint="BOTTOMLEFT"/>
 			</Anchors>
 			<Scripts>
 				<OnClick> ButtonListFunction(9); </OnClick>
 			</Scripts>
 		</Button>
 
-		<Button name="MyModEntry10" inherits="MyModEntryTemplate">
+		<Button name="ButtonList10" inherits="ButtonListTemplate">
 			<Anchors>
-				<Anchor point="TOPLEFT" relativeTo="MyModEntry9" relativePoint="BOTTOMLEFT"/>
+				<Anchor point="TOPLEFT" relativeTo="ButtonList9" relativePoint="BOTTOMLEFT"/>
 			</Anchors>
 			<Scripts>
 				<OnClick> ButtonListFunction(10); </OnClick>
 			</Scripts>
 		</Button>
 
-		<Button name="MyModEntry11" inherits="MyModEntryTemplate">
+		<Button name="ButtonList11" inherits="ButtonListTemplate">
 			<Anchors>
-				<Anchor point="TOPLEFT" relativeTo="MyModEntry10" relativePoint="BOTTOMLEFT"/>
+				<Anchor point="TOPLEFT" relativeTo="ButtonList10" relativePoint="BOTTOMLEFT"/>
 			</Anchors>
 			<Scripts>
 				<OnClick> ButtonListFunction(11); </OnClick>
 			</Scripts>
 		</Button>
 		
-		<Button name="MyModEntry12" inherits="MyModEntryTemplate">
+		<Button name="ButtonList12" inherits="ButtonListTemplate">
 			<Anchors>
-				<Anchor point="TOPLEFT" relativeTo="MyModEntry11" relativePoint="BOTTOMLEFT"/>
+				<Anchor point="TOPLEFT" relativeTo="ButtonList11" relativePoint="BOTTOMLEFT"/>
 			</Anchors>
 			<Scripts>
 				<OnClick> ButtonListFunction(12); </OnClick>
 			</Scripts>
 		</Button>
 
-		<Button name="MyModEntry13" inherits="MyModEntryTemplate">
+		<Button name="ButtonList13" inherits="ButtonListTemplate">
 			<Anchors>
-				<Anchor point="TOPLEFT" relativeTo="MyModEntry12" relativePoint="BOTTOMLEFT"/>
+				<Anchor point="TOPLEFT" relativeTo="ButtonList12" relativePoint="BOTTOMLEFT"/>
 			</Anchors>
 			<Scripts>
 				<OnClick> ButtonListFunction(13); </OnClick>
 			</Scripts>
 		</Button>
 
-		<Button name="MyModEntry14" inherits="MyModEntryTemplate">
+		<Button name="ButtonList14" inherits="ButtonListTemplate">
 			<Anchors>
-				<Anchor point="TOPLEFT" relativeTo="MyModEntry13" relativePoint="BOTTOMLEFT"/>
+				<Anchor point="TOPLEFT" relativeTo="ButtonList13" relativePoint="BOTTOMLEFT"/>
 			</Anchors>
 			<Scripts>
 				<OnClick> ButtonListFunction(14); </OnClick>
