@@ -1,4 +1,4 @@
-SoundFilesListLocation = {
+SoundFiles_Paths = {
 "Interface\\Cinematics\\DSI_Act1.mp3",
 "Interface\\Cinematics\\DSI_Act2.mp3",
 "Interface\\Cinematics\\DSI_Act3.mp3",

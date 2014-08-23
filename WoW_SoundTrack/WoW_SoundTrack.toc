@@ -7,4 +7,6 @@
 ## SavedVariablesPerCharacter: WoW_SoundTrack_SVPC
 
 WoW_SoundTrack.lua
+SoundFiles_Paths.lua
+SoundFiles_Names.lua
 WoW_SoundTrack.xml

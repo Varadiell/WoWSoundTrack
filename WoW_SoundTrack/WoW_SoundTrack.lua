@@ -5,6 +5,7 @@
 
 local musicselectedtitle = "";
 local musicselectednumber = 0;
+local MusicData = {} -- Names / Paths (tableau à deux dimensions)
 
 -- ===================================================
 -- Création des évènements et des scripts déclencheurs
@@ -99,7 +100,7 @@ end
 
 -- PlayMusicFunction() : Joue la musique sélectionnée par l'utilisateur
 function PlayMusicFunction()
-	PlayMusic(MusicData[musicselectednumber][2], "Ambience");
+	PlayMusic(MusicData[2][musicselectednumber], "Ambience");
 end
 
 -- StopMusicFunction() : Arrête la musique en cours de lecture
@@ -179,39 +180,29 @@ end
 -- ButtonListFunction(Int n) : Appelé lors d'une activation d'un des 13 boutons de la liste de sélection
 function ButtonListFunction(n)
 	musicselectednumber = n + FauxScrollFrame_GetOffset(MyModScrollBar);
-	musicselectedtitle = MusicData[musicselectednumber][1];
+	musicselectedtitle = MusicData[1][musicselectednumber];
 	EnableButtonPlay();
 	PlayButtonSound();
 end
 
 -- =================================
 
-MusicData = {}
+
 
 function MyMod_OnLoad()
-
-	MusicData = {
-		{"The Burning Crusade (main theme)", "Sound\\Music\\GlueScreenMusic\\BC_main_theme.mp3"},
-		{"Lament of the Highborne", "Sound\\Music\\GlueScreenMusic\\BCCredits_Lament_of_the_Highborne.mp3"},
-		{"Wrath of the Lich King (main title)", "Sound\\Music\\GlueScreenMusic\\WotLK_main_title.mp3"},
-		{"World of Warcraft (main theme)", "Sound\\Music\\GlueScreenMusic\\wow_main_theme.mp3"},
-		{"City Music - Darnassus (intro)", "Sound\\Music\\CityMusic\\Darnassus\\Darnassus Intro.mp3"},
-		{"City Music - Darnassus (walking 1)", "Sound\\Music\\CityMusic\\Darnassus\\Darnassus Walking 1.mp3"},
-		{"City Music - Darnassus (walking 2)", "Sound\\Music\\CityMusic\\Darnassus\\Darnassus Walking 2.mp3"},
-		{"City Music - Darnassus (walking 3)", "Sound\\Music\\CityMusic\\Darnassus\\Darnassus Walking 3.mp3"},
-	}
-
-  MyModScrollBar:Show()
+	MusicData[1] = SoundFiles_Names;
+	MusicData[2] = SoundFiles_Paths;
+	MyModScrollBar:Show()
 end
 
 function MyModScrollBar_Update()
   local line; -- 13 lignes à afficher
   local lineplusoffset; -- Permettra d'afficher le texte d'un bouton grâce au numéro de ligne (de 1 à 13) et au décalage de l'affichage
-  FauxScrollFrame_Update(MyModScrollBar,table.getn(MusicData),13,16); -- Scrollbarconcernée / nblignestotal / nblignesàafficher / tailleboutons
+  FauxScrollFrame_Update(MyModScrollBar,#SoundFiles_Paths,13,16); -- Scrollbarconcernée / nblignestotal / nblignesàafficher / tailleboutons
   for line=1,13 do
     lineplusoffset = line + FauxScrollFrame_GetOffset(MyModScrollBar);
-    if lineplusoffset <= table.getn(MusicData) then
-      getglobal("MyModEntry"..line):SetText(MusicData[lineplusoffset][1]);
+    if lineplusoffset <= #SoundFiles_Paths then
+      getglobal("MyModEntry"..line):SetText(MusicData[1][lineplusoffset]);
       getglobal("MyModEntry"..line):Show();
     else
       getglobal("MyModEntry"..line):Hide();
