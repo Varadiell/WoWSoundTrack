@@ -14,7 +14,7 @@
 		<OnDragStop>self:StopMovingOrSizing();</OnDragStop>
 	</Scripts>
 	<Layers>
-		<Layer level="BACKGROUND">
+		<Layer level="OVERLAY">
 			<Texture file="Interface/ITEMSOCKETINGFRAME/UI-ItemSocketingFrame" parentKey="background">
 				<Anchors>
 					<Anchor point="TOPLEFT">
@@ -43,10 +43,10 @@
 		</Layer>
 		<Layer level="BACKGROUND">
 			<Texture name="parent_Portrait" parentKey="portrait" file="Interface/ICONS/Achievement_General">
-			<Size x="51" y="51"/>
+			<Size x="60" y="60"/>
 			<Anchors>
 				<Anchor point="TOPLEFT">
-					<Offset x="7" y="-7"/>
+					<Offset x="3" y="-3"/>
 				</Anchor>
 			</Anchors>
 			</Texture>
@@ -320,6 +320,8 @@
 		<OnClick> ButtonCloseFunction(); </OnClick>
 	</Scripts>
 </Button>
+
+
 
 
 

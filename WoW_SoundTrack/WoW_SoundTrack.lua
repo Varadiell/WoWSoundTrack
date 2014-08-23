@@ -200,7 +200,7 @@ function ScrollBarList_Update()
 	for line=1,14 do
 		lineplusoffset = line + FauxScrollFrame_GetOffset(ScrollBarList);
 		if lineplusoffset <= #SoundFiles_Paths then
-			getglobal("ButtonList"..line):SetText(MusicData[1][lineplusoffset]);
+			getglobal("ButtonList"..line):SetText("|cff4BB5C1"..lineplusoffset.."|r "..MusicData[1][lineplusoffset]);
 			getglobal("ButtonList"..line):Show();
 		else
 			getglobal("ButtonList"..line):Hide();
@@ -211,8 +211,6 @@ end
 
 
 -- ==============================
-
-
 
 
 
