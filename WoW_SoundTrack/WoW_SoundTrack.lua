@@ -35,6 +35,7 @@ end
 function InitializeWST()
 	LoadAndShowSoundTrackList();
 	ScrollBarList_Update();
+	CheckButtonTab1:SetChecked(true);
 	SetPortraitToTexture(MainFrame.portrait, "Interface/ICONS/Achievement_General")
 	ShowMainFrame(); -- TODO: ligne à enlever
 	DisableButtonPlay(); -- TODO: ligne à décommenter
@@ -78,6 +79,11 @@ end
 -- PlayButtonSound() : Joue le son d'un bouton actionné
 function PlayButtonSound()
 	PlaySound("UChatScrollButton");
+end
+
+-- PlayTabSound() : Joue le son d'un onglet ouvert
+function PlayTabSound()
+	PlaySound("igCharacterInfoTab");
 end
 
 -- EnableButtonPlay() : Rend le bouton Jouer utilisable
@@ -185,6 +191,20 @@ function ButtonListFunction(n)
 	musicselectedtitle = MusicData[1][musicselectednumber];
 	EnableButtonPlay();
 	PlayButtonSound();
+end
+
+-- CheckButtonTabFunction(Int n) : Appelé lors d'une activation d'un des 2 CheckButtonTab
+function CheckButtonTabFunction(n)
+	PlayTabSound();
+	if(n == 1) then
+		CheckButtonTab1:SetChecked(true);
+		CheckButtonTab2:SetChecked(false);
+		ScrollBarFrame:Show();
+	else
+		CheckButtonTab1:SetChecked(false);
+		CheckButtonTab2:SetChecked(true);
+		ScrollBarFrame:Hide();
+	end
 end
 
 

@@ -346,7 +346,7 @@
 		</Layer>
 	</Layers>
 	<Frames>
-		<CheckButton>
+		<CheckButton name="CheckButtonTab1">
 			<Size>
 				<AbsDimension x="36" y="34"/>
 			</Size>
@@ -356,22 +356,22 @@
 				</Anchor>
 			</Anchors>
 			<Scripts>
-				<OnClick>ScrollBarFrame:Show()</OnClick>
+				<OnClick> CheckButtonTabFunction(1); </OnClick>
 			</Scripts>
-			<NormalTexture name="$parentNormalTexture" file="Interface\Buttons\UI-Quickslot2">
+			<NormalTexture file="Interface/ICONS/Ability_Paladin_JudgementoftheWise">
 				<Size>
-					<AbsDimension x="60" y="60"/>
+					<AbsDimension x="30" y="30"/>
 				</Size>
 				<Anchors>
 					<Anchor point="CENTER">
 						<Offset>
-							<AbsDimension x="0" y="-1"/>
+							<AbsDimension x="-1" y="-1"/>
 						</Offset>
 					</Anchor>
 				</Anchors>
 			</NormalTexture>
-			<PushedTexture file="Interface\Buttons\UI-Quickslot-Depress"><Size/></PushedTexture>
 			<HighlightTexture file="Interface\Buttons\ButtonHilight-Square" alphaMode="ADD"><Size/></HighlightTexture>
+			<CheckedTexture file="Interface\Buttons\UI-Quickslot-Depress"><Size/></CheckedTexture>
 		</CheckButton>
 	</Frames>
 </Frame>
@@ -398,7 +398,7 @@
 		</Layer>
 	</Layers>
 	<Frames>
-		<CheckButton>
+		<CheckButton name="CheckButtonTab2">
 			<Size>
 				<AbsDimension x="36" y="34"/>
 			</Size>
@@ -408,22 +408,22 @@
 				</Anchor>
 			</Anchors>
 			<Scripts>
-				<OnClick>ScrollBarFrame:Hide()</OnClick>
+				<OnClick> CheckButtonTabFunction(2); </OnClick>
 			</Scripts>
-			<NormalTexture name="$parentNormalTexture" file="Interface\Buttons\UI-Quickslot2">
+			<NormalTexture file="Interface/ICONS/Ability_Paladin_JudgementofthePure">
 				<Size>
-					<AbsDimension x="60" y="60"/>
+					<AbsDimension x="30" y="30"/>
 				</Size>
 				<Anchors>
 					<Anchor point="CENTER">
 						<Offset>
-							<AbsDimension x="0" y="-1"/>
+							<AbsDimension x="-1" y="-1"/>
 						</Offset>
 					</Anchor>
 				</Anchors>
 			</NormalTexture>
-			<PushedTexture file="Interface\Buttons\UI-Quickslot-Depress"><Size/></PushedTexture>
 			<HighlightTexture file="Interface\Buttons\ButtonHilight-Square" alphaMode="ADD"><Size/></HighlightTexture>
+			<CheckedTexture file="Interface\Buttons\UI-Quickslot-Depress"><Size/></CheckedTexture>
 		</CheckButton>
 	</Frames>
 </Frame>
