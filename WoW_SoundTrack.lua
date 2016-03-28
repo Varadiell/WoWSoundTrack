@@ -117,8 +117,8 @@ function StopMusicFunction()
 end
 
 -- SetMusicTitle(string) : Définit le titre de la musique en cours de lecture
-function SetMusicTitle(title)
-	StringMusiqueEnCours:SetText(title);
+function SetMusicTitle(title, number)
+	StringMusiqueEnCours:SetText(number.." - "..title);
 end
 
 -- ClearMusicTitle() : Efface le nom de la musique en cours de lecture
@@ -167,7 +167,7 @@ function ButtonPlayFunction()
 	PlayButtonSound();
 	DisableButtonPlay();
 	EnableButtonStop();
-	SetMusicTitle(musicselectedtitle); -- TODO: à remplacer par la variable musicselected
+	SetMusicTitle(musicselectedtitle, musicselectednumber); -- TODO: à remplacer par la variable musicselected
 end
 
 -- ButtonStopFunction() : Appelé lors d'une activation du bouton Arrêter
