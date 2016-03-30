@@ -14,20 +14,28 @@
 		<OnDragStop>self:StopMovingOrSizing();</OnDragStop>
 	</Scripts>
 	<Layers>
-		<Layer level="OVERLAY">
-			<Texture file="Interface/ITEMSOCKETINGFRAME/UI-ItemSocketingFrame" parentKey="background">
+		<Layer level="ARTWORK">
+			<Texture name="ScrollBarGoldBorderBottom" file="Interface\Common\UI-Goldborder">
+				<Size x="25" y="30"/>
 				<Anchors>
-					<Anchor point="TOPLEFT">
-						<Offset>
-							<AbsDimension x="0" y="0"/>
-						</Offset>
-					</Anchor>
-					<Anchor point="BOTTOMRIGHT">
-						<Offset>
-							<AbsDimension x="148" y="-68"/>
-						</Offset>
-					</Anchor>
+					<Anchor point="BOTTOMLEFT" relativePoint="BOTTOMRIGHT" x="-42" y="80"/>
 				</Anchors>
+				<TexCoords left="0.00390625" right="0.12109375" top="0.00781250" bottom="0.25781250"/>
+			</Texture>
+			<Texture name="ScrollBarGoldBorderTop" file="Interface\Common\UI-Goldborder">
+				<Size x="25" y="33"/>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativePoint="TOPRIGHT" x="-42" y="-77"/>
+				</Anchors>
+				<TexCoords left="0.00390625" right="0.12109375" top="0.27343750" bottom="0.52343750"/>	
+			</Texture>
+			<Texture name="ScrollBarGoldBorderMiddle" file="Interface\Common\UI-Goldborder-!tile" vertTile="true">
+				<Size x="25" y="50"/>
+				<Anchors>
+					<Anchor point="TOPRIGHT" relativeTo="ScrollBarGoldBorderTop" relativePoint="BOTTOMRIGHT"/>
+					<Anchor point="BOTTOMRIGHT" relativeTo="ScrollBarGoldBorderBottom" relativePoint="TOPRIGHT"/>
+				</Anchors>
+				<TexCoords left="0.09375000" right="0.32812500" top="0.00000000" bottom="1.00000000"/>	
 			</Texture>
 		</Layer>
 		<Layer level="OVERLAY">
