@@ -15,6 +15,116 @@
 	</Scripts>
 	<Layers>
 		<Layer level="ARTWORK">
+			<Texture parentKey="ParchmentFrame-Top" file="Interface\ItemSocketingFrame\UI-ItemSocketingFrame-_tile" horizTile="true" >
+				<Size x="256" y="42"/>
+				<Anchors>
+					<Anchor point="TOPLEFT" x="2" y="-32"/>
+					<Anchor point="BOTTOMRIGHT" x="-1" y="323"/>
+				</Anchors>
+				<TexCoords left="0.00000000" right="1.00000000" top="0.37500000" bottom="0.70312500"/>
+			</Texture>
+			<Texture parentKey="ParchmentFrame-Bottom" file="Interface\ItemSocketingFrame\UI-ItemSocketingFrame-_tile" horizTile="true" >
+				<Size x="256" y="22"/>
+				<Anchors>
+					<Anchor point="TOPLEFT" x="2" y="-369"/>
+					<Anchor point="BOTTOMRIGHT" x="-1" y="0"/>
+				</Anchors>
+				<TexCoords left="0.00000000" right="1.00000000" top="0.18750000" bottom="0.35937500"/>	
+			</Texture>
+			<Texture parentKey="ParchmentFrame-Left" file="Interface\ItemSocketingFrame\UI-ItemSocketParchementFrame-Left" vertTile="true">
+				<Size x="9" y="128"/>
+				<Anchors>
+					<Anchor point="TOPLEFT" x="2" y="-68"/>
+					<Anchor point="BOTTOMLEFT" x="2" y="20"/>
+				</Anchors>
+				<TexCoords left="0" right="0.75" top="0" bottom="1"/>
+			</Texture>
+			<Texture parentKey="ParchmentFrame-Right" file="Interface\ItemSocketingFrame\UI-ItemSocketParchementFrame-Left" vertTile="true">
+				<Size x="9" y="128"/>
+				<Anchors>
+					<Anchor point="TOPLEFT" x="305" y="-68"/>
+					<Anchor point="BOTTOMRIGHT" x="0" y="20"/>
+				</Anchors>
+				<TexCoords left="0" right="0.75" top="0" bottom="1"/>
+			</Texture>
+			<Texture parentKey="SocketFrame-Left" file="Interface\ItemSocketingFrame\UI-ItemSocketingFrame">
+				<Size x="158" y="51"/>
+				<Anchors>
+					<Anchor point="BOTTOMLEFT" x="10" y="21"/>
+				</Anchors>
+				<TexCoords left="0.00390625" right="0.62109375" top="0.00390625" bottom="0.20312500"/>	
+			</Texture>
+			<Texture parentKey="SocketFrame-Right" file="Interface\ItemSocketingFrame\UI-ItemSocketingFrame">
+				<Size x="158" y="51"/>
+				<Anchors>
+					<Anchor point="BOTTOMRIGHT" x="-9" y="21"/>
+				</Anchors>
+				<TexCoords left="0.00390625" right="0.62109375" top="0.21093750" bottom="0.41015625"/>	
+			</Texture>
+
+
+			<Texture parentKey="GoldBorder-BottomRight" file="Interface\Common\UI-Goldborder">
+				<Size x="66" y="55"/>
+				<Anchors>
+					<Anchor point="BOTTOMRIGHT" x="-9" y="71"/>
+				</Anchors>
+				<TexCoords left="0.26171875" right="0.51953125" top="0.00781250" bottom="0.43750000"/>	
+			</Texture>
+			<Texture parentKey="GoldBorder-BottomLeft" file="Interface\Common\UI-Goldborder">
+				<Size x="66" y="55"/>
+				<Anchors>
+					<Anchor point="BOTTOMLEFT" x="11" y="71"/>
+				</Anchors>
+				<TexCoords left="0.26171875" right="0.51953125" top="0.45312500" bottom="0.88281250"/>	
+			</Texture>
+			<Texture parentKey="GoldBorder-TopRight" file="Interface\Common\UI-Goldborder">
+				<Size x="66" y="55"/>
+				<Anchors>
+					<Anchor point="TOPRIGHT" x="-9" y="-68"/>
+				</Anchors>
+				<TexCoords left="0.52734375" right="0.78515625" top="0.00781250" bottom="0.43750000"/>	
+			</Texture>
+			<Texture parentKey="GoldBorder-TopLeft" file="Interface\Common\UI-Goldborder">
+				<Size x="66" y="55"/>
+				<Anchors>
+					<Anchor point="TOPLEFT" x="11" y="-68"/>
+				</Anchors>
+				<TexCoords left="0.52734375" right="0.78515625" top="0.45312500" bottom="0.88281250"/>	
+			</Texture>
+			<Texture parentKey="GoldBorder-Left" file="Interface\Common\UI-Goldborder-!tile" vertTile="true" >
+				<Size x="9" y="128"/>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeKey="$parent.GoldBorder-TopLeft" relativePoint="BOTTOMLEFT"/>
+					<Anchor point="BOTTOMLEFT" relativeKey="$parent.GoldBorder-BottomLeft" relativePoint="TOPLEFT"/>
+				</Anchors>
+				<TexCoords left="0.00781250" right="0.07812500" top="0.00000000" bottom="1.00000000"/>	
+			</Texture>
+			<Texture parentKey="GoldBorder-Right" file="Interface\Common\UI-Goldborder-!tile" vertTile="true" >
+				<Size x="9" y="128"/>
+				<Anchors>
+					<Anchor point="TOPRIGHT" relativeKey="$parent.GoldBorder-TopRight" relativePoint="BOTTOMRIGHT"/>
+					<Anchor point="BOTTOMRIGHT" relativeKey="$parent.GoldBorder-BottomRight" relativePoint="TOPRIGHT"/>
+				</Anchors>
+				<TexCoords left="0.00781250" right="0.07812500" top="0.00000000" bottom="1.00000000"/>	
+			</Texture>
+			<Texture parentKey="GoldBorder-Top" file="Interface\Common\UI-Goldborder-_tile" horizTile="true" >
+				<Size x="256" y="9"/>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeKey="$parent.GoldBorder-TopLeft" relativePoint="TOPRIGHT"/>
+					<Anchor point="TOPRIGHT" relativeKey="$parent.GoldBorder-TopRight" relativePoint="TOPLEFT"/>
+				</Anchors>
+				<TexCoords left="0.00000000" right="1.00000000" top="0.01562500" bottom="0.15625000"/>	
+			</Texture>
+			<Texture parentKey="GoldBorder-Bottom" file="Interface\Common\UI-Goldborder-_tile" horizTile="true" >
+				<Size x="256" y="9"/>
+				<Anchors>
+					<Anchor point="BOTTOMLEFT" relativeKey="$parent.GoldBorder-BottomLeft" relativePoint="BOTTOMRIGHT"/>
+					<Anchor point="BOTTOMRIGHT" relativeKey="$parent.GoldBorder-BottomRight" relativePoint="BOTTOMLEFT"/>
+				</Anchors>
+				<TexCoords left="0.00000000" right="1.00000000" top="0.01562500" bottom="0.15625000"/>	
+			</Texture>
+		</Layer>
+		<Layer level="ARTWORK">
 			<Texture name="ScrollBarGoldBorderBottom" file="Interface\Common\UI-Goldborder">
 				<Size x="25" y="30"/>
 				<Anchors>
