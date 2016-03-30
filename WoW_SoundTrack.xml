@@ -14,6 +14,78 @@
 		<OnDragStop>self:StopMovingOrSizing();</OnDragStop>
 	</Scripts>
 	<Layers>
+
+		<Layer level="BORDER">
+			<Texture parentKey="BackgroundColor">
+				<Anchors>
+					<Anchor point="TOPLEFT" x="20" y="-68"/>
+					<Anchor point="BOTTOMRIGHT" x="-20" y="80"/>
+				</Anchors>
+				<Color r="0.078125" g="0.12109375" b="0.21484375" a="0.5"/>
+			</Texture>
+			<Texture parentKey="BorderShadow-TopLeftCorner" file="Interface\Common\UI-Goldborder">
+				<Size x="32" y="32"/>
+				<Anchors>
+					<Anchor point="TOPLEFT" x="20" y="-76"/>
+				</Anchors>
+				<TexCoords left="0.12890625" right="0.25390625" top="0.00781250" bottom="0.25781250"/>	
+			</Texture>
+			<Texture parentKey="BorderShadow-TopRightCorner" file="Interface\Common\UI-Goldborder">
+				<Size x="32" y="32"/>
+				<Anchors>
+					<Anchor point="TOPRIGHT" x="-19" y="-76"/>
+				</Anchors>
+				<TexCoords left="0.25390625" right="0.12890625" top="0.00781250" bottom="0.25781250"/>	
+			</Texture>
+			<Texture parentKey="BorderShadow-BottomLeftCorner" file="Interface\Common\UI-Goldborder">
+				<Size x="32" y="32"/>
+				<Anchors>
+					<Anchor point="BOTTOMLEFT" x="20" y="80"/>
+				</Anchors>
+				<TexCoords left="0.12890625" right="0.25390625" top="0.25781250" bottom="0.00781250"/>	
+			</Texture>
+			<Texture parentKey="BorderShadow-BottomRightCorner" file="Interface\Common\UI-Goldborder">
+				<Size x="32" y="32"/>
+				<Anchors>
+					<Anchor point="BOTTOMRIGHT" x="-19" y="80"/>
+				</Anchors>
+				<TexCoords left="0.25390625" right="0.12890625" top="0.25781250" bottom="0.00781250"/>	
+			</Texture>
+
+			<Texture parentKey="BorderShadow-Top" file="Interface\Common\UI-Goldborder-_tile" horizTile="true" >
+				<Size x="256" y="32"/>	
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeKey="$parent.BorderShadow-TopLeftCorner" relativePoint="TOPRIGHT"/>
+					<Anchor point="TOPRIGHT" relativeKey="$parent.BorderShadow-TopRightCorner" relativePoint="TOPLEFT"/>
+				</Anchors>
+				<TexCoords left="0.00000000" right="1.00000000" top="0.18750000" bottom="0.68750000"/>	
+			</Texture>
+			<Texture parentKey="BorderShadow-Left" file="Interface\Common\UI-Goldborder-!tile" vertTile="true" >
+				<Size x="32" y="128"/>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeKey="$parent.BorderShadow-TopLeftCorner" relativePoint="BOTTOMLEFT"/>
+					<Anchor point="BOTTOMLEFT" relativeKey="$parent.BorderShadow-BottomLeftCorner" relativePoint="TOPLEFT"/>
+				</Anchors>
+				<TexCoords left="0.34375000" right="0.59375000" top="0.00000000" bottom="1.00000000"/>	
+			</Texture>
+			<Texture parentKey="BorderShadow-Bottom" file="Interface\Common\UI-Goldborder-_tile" horizTile="true" >
+				<Size x="256" y="32"/>	
+				<Anchors>
+					<Anchor point="BOTTOMLEFT" relativeKey="$parent.BorderShadow-BottomLeftCorner" relativePoint="BOTTOMRIGHT"/>
+					<Anchor point="BOTTOMRIGHT" relativeKey="$parent.BorderShadow-BottomRightCorner" relativePoint="BOTTOMLEFT"/>
+				</Anchors>
+				<TexCoords left="0.00000000" right="1.00000000" top="0.68750000" bottom="0.18750000"/>	
+			</Texture>
+			<Texture parentKey="BorderShadow-Right" file="Interface\Common\UI-Goldborder-!tile" vertTile="true" >
+				<Size x="32" y="128"/>
+				<Anchors>
+					<Anchor point="TOPRIGHT" relativeKey="$parent.BorderShadow-TopRightCorner" relativePoint="BOTTOMRIGHT"/>
+					<Anchor point="BOTTOMRIGHT" relativeKey="$parent.BorderShadow-BottomRightCorner" relativePoint="TOPRIGHT"/>
+				</Anchors>
+				<TexCoords left="0.59375000" right="0.34375000" top="0.00000000" bottom="1.00000000"/>	
+			</Texture>
+		</Layer>
+
 		<Layer level="ARTWORK">
 			<Texture parentKey="ParchmentFrame-Top" file="Interface\ItemSocketingFrame\UI-ItemSocketingFrame-_tile" horizTile="true" >
 				<Size x="256" y="42"/>
@@ -61,7 +133,6 @@
 				</Anchors>
 				<TexCoords left="0.00390625" right="0.62109375" top="0.21093750" bottom="0.41015625"/>	
 			</Texture>
-
 
 			<Texture parentKey="GoldBorder-BottomRight" file="Interface\Common\UI-Goldborder">
 				<Size x="66" y="55"/>
