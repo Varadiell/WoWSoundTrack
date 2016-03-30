@@ -118,7 +118,7 @@ end
 
 -- SetMusicTitle(string) : Définit le titre de la musique en cours de lecture
 function SetMusicTitle(title, number)
-	StringMusiqueEnCours:SetText(number.." - "..title);
+	StringMusiqueEnCours:SetText("|cff4BB5C1"..number.."|r "..title);
 end
 
 -- ClearMusicTitle() : Efface le nom de la musique en cours de lecture
