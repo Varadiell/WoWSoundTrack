@@ -2,7 +2,7 @@
 
 <Script file="WoW_SoundTrack.lua" />
 
-<Frame name="MainFrame" parent="IUParent" toplevel="true" enableMouse="true" movable="true">
+<Frame name="MainFrame" parent="IUParent" toplevel="false" enableMouse="true" movable="true" inherits="ButtonFrameTemplate">
 	<Size x="314" y="391" />
 	<Anchors>
 		<Anchor point="CENTER" />
@@ -14,7 +14,54 @@
 		<OnDragStop>self:StopMovingOrSizing();</OnDragStop>
 	</Scripts>
 	<Layers>
-
+		<Layer level="ARTWORK">
+			<Texture parentKey="ParchmentFrame-Top" file="Interface\ItemSocketingFrame\UI-ItemSocketingFrame-_tile" horizTile="true" >
+				<Size x="256" y="42"/>
+				<Anchors>
+					<Anchor point="TOPLEFT" x="2" y="-22"/>
+					<Anchor point="BOTTOMRIGHT" x="-4" y="323"/>
+				</Anchors>
+				<TexCoords left="0.00000000" right="1.00000000" top="0.37500000" bottom="0.70312500"/>
+			</Texture>
+			<Texture parentKey="ParchmentFrame-Bottom" file="Interface\ItemSocketingFrame\UI-ItemSocketingFrame-_tile" horizTile="true" >
+				<Size x="256" y="22"/>
+				<Anchors>
+					<Anchor point="TOPLEFT" x="2" y="-369"/>
+					<Anchor point="BOTTOMRIGHT" x="-4" y="3"/>
+				</Anchors>
+				<TexCoords left="0.00000000" right="1.00000000" top="0.18750000" bottom="0.35937500"/>
+			</Texture>
+			<Texture parentKey="ParchmentFrame-Left" file="Interface\ItemSocketingFrame\UI-ItemSocketParchementFrame-Left" vertTile="true">
+				<Size x="9" y="128"/>
+				<Anchors>
+					<Anchor point="TOPLEFT" x="2" y="-68"/>
+					<Anchor point="BOTTOMLEFT" x="2" y="20"/>
+				</Anchors>
+				<TexCoords left="0" right="0.75" top="0" bottom="1"/>
+			</Texture>
+			<Texture parentKey="ParchmentFrame-Right" file="Interface\ItemSocketingFrame\UI-ItemSocketParchementFrame-Left" vertTile="true">
+				<Size x="9" y="128"/>
+				<Anchors>
+					<Anchor point="TOPLEFT" x="305" y="-68"/>
+					<Anchor point="BOTTOMRIGHT" x="-4" y="20"/>
+				</Anchors>
+				<TexCoords left="0" right="0.75" top="0" bottom="1"/>
+			</Texture>
+			<Texture parentKey="SocketFrame-Left" file="Interface\ItemSocketingFrame\UI-ItemSocketingFrame">
+				<Size x="158" y="51"/>
+				<Anchors>
+					<Anchor point="BOTTOMLEFT" x="10" y="21"/>
+				</Anchors>
+				<TexCoords left="0.00390625" right="0.62109375" top="0.00390625" bottom="0.20312500"/>	
+			</Texture>
+			<Texture parentKey="SocketFrame-Right" file="Interface\ItemSocketingFrame\UI-ItemSocketingFrame">
+				<Size x="158" y="51"/>
+				<Anchors>
+					<Anchor point="BOTTOMRIGHT" x="-9" y="21"/>
+				</Anchors>
+				<TexCoords left="0.00390625" right="0.62109375" top="0.21093750" bottom="0.41015625"/>	
+			</Texture>
+		</Layer>
 		<Layer level="BORDER">
 			<Texture parentKey="BackgroundColor">
 				<Anchors>
@@ -85,55 +132,7 @@
 				<TexCoords left="0.59375000" right="0.34375000" top="0.00000000" bottom="1.00000000"/>	
 			</Texture>
 		</Layer>
-
 		<Layer level="ARTWORK">
-			<Texture parentKey="ParchmentFrame-Top" file="Interface\ItemSocketingFrame\UI-ItemSocketingFrame-_tile" horizTile="true" >
-				<Size x="256" y="42"/>
-				<Anchors>
-					<Anchor point="TOPLEFT" x="2" y="-32"/>
-					<Anchor point="BOTTOMRIGHT" x="-1" y="323"/>
-				</Anchors>
-				<TexCoords left="0.00000000" right="1.00000000" top="0.37500000" bottom="0.70312500"/>
-			</Texture>
-			<Texture parentKey="ParchmentFrame-Bottom" file="Interface\ItemSocketingFrame\UI-ItemSocketingFrame-_tile" horizTile="true" >
-				<Size x="256" y="22"/>
-				<Anchors>
-					<Anchor point="TOPLEFT" x="2" y="-369"/>
-					<Anchor point="BOTTOMRIGHT" x="-1" y="0"/>
-				</Anchors>
-				<TexCoords left="0.00000000" right="1.00000000" top="0.18750000" bottom="0.35937500"/>	
-			</Texture>
-			<Texture parentKey="ParchmentFrame-Left" file="Interface\ItemSocketingFrame\UI-ItemSocketParchementFrame-Left" vertTile="true">
-				<Size x="9" y="128"/>
-				<Anchors>
-					<Anchor point="TOPLEFT" x="2" y="-68"/>
-					<Anchor point="BOTTOMLEFT" x="2" y="20"/>
-				</Anchors>
-				<TexCoords left="0" right="0.75" top="0" bottom="1"/>
-			</Texture>
-			<Texture parentKey="ParchmentFrame-Right" file="Interface\ItemSocketingFrame\UI-ItemSocketParchementFrame-Left" vertTile="true">
-				<Size x="9" y="128"/>
-				<Anchors>
-					<Anchor point="TOPLEFT" x="305" y="-68"/>
-					<Anchor point="BOTTOMRIGHT" x="0" y="20"/>
-				</Anchors>
-				<TexCoords left="0" right="0.75" top="0" bottom="1"/>
-			</Texture>
-			<Texture parentKey="SocketFrame-Left" file="Interface\ItemSocketingFrame\UI-ItemSocketingFrame">
-				<Size x="158" y="51"/>
-				<Anchors>
-					<Anchor point="BOTTOMLEFT" x="10" y="21"/>
-				</Anchors>
-				<TexCoords left="0.00390625" right="0.62109375" top="0.00390625" bottom="0.20312500"/>	
-			</Texture>
-			<Texture parentKey="SocketFrame-Right" file="Interface\ItemSocketingFrame\UI-ItemSocketingFrame">
-				<Size x="158" y="51"/>
-				<Anchors>
-					<Anchor point="BOTTOMRIGHT" x="-9" y="21"/>
-				</Anchors>
-				<TexCoords left="0.00390625" right="0.62109375" top="0.21093750" bottom="0.41015625"/>	
-			</Texture>
-
 			<Texture parentKey="GoldBorder-BottomRight" file="Interface\Common\UI-Goldborder">
 				<Size x="66" y="55"/>
 				<Anchors>
@@ -194,8 +193,6 @@
 				</Anchors>
 				<TexCoords left="0.00000000" right="1.00000000" top="0.01562500" bottom="0.15625000"/>	
 			</Texture>
-		</Layer>
-		<Layer level="ARTWORK">
 			<Texture name="ScrollBarGoldBorderBottom" file="Interface\Common\UI-Goldborder">
 				<Size x="25" y="30"/>
 				<Anchors>
@@ -224,38 +221,14 @@
 				<Anchors>
 					<Anchor point="TOP">
 						<Offset>
-							<AbsDimension x="18" y="-18"/>
+							<AbsDimension x="18" y="-8"/>
 						</Offset>
 					</Anchor>
 				</Anchors>
 			</FontString>
 		</Layer>
-		<Layer level="BACKGROUND">
-			<Texture name="parent_Portrait" parentKey="portrait" file="Interface/ICONS/Achievement_General">
-			<Size x="60" y="60"/>
-			<Anchors>
-				<Anchor point="TOPLEFT">
-					<Offset x="3" y="-3"/>
-				</Anchor>
-			</Anchors>
-			</Texture>
-		</Layer>
 	</Layers>
-	<Frames>
-		<Button name="CloseButton" inherits="UIPanelCloseButton">
-			<Size x="28" y="28" />
-			<Anchors>
-				<Anchor point="TOPRIGHT" x="4" y="-9"/>
-			</Anchors>
-			<Scripts>
-				<OnClick> ButtonCloseFunction(); </OnClick>
-			</Scripts>
-		</Button>
-
-	</Frames>
 </Frame>
-
-
 <Button name="ButtonListTemplate" virtual="true">
 	<Size>
 		<AbsDimension x="240" y="16" />
@@ -432,7 +405,7 @@
 		<AbsDimension x="243" y="30"/>
 	</Size>
 	<Anchors>
-		<Anchor point="TOPLEFT" x="66" y="-35"/>
+		<Anchor point="TOPLEFT" x="62" y="-30"/>
 	</Anchors>
 	<Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Gold-Border" tile="true">
 		<BackgroundInsets>
@@ -497,11 +470,11 @@
 
 
 <Button name="ButtonClose" parent="MainFrame" inherits="OptionsButtonTemplate" text="Fermer">
-	<Size x="153" y="21" />
+	<Size x="150" y="20" />
 	<Anchors>
 		<Anchor point="BOTTOMLEFT">
 			<Offset>
-				<AbsDimension x="161" y="1"/>
+				<AbsDimension x="160" y="2"/>
 			</Offset>
 		</Anchor>
 	</Anchors>
