@@ -402,10 +402,10 @@
 
 <Frame name="FrameMusiqueEnCours" parent="MainFrame">
 	<Size>
-		<AbsDimension x="243" y="30"/>
+		<AbsDimension x="250" y="30"/>
 	</Size>
 	<Anchors>
-		<Anchor point="TOPLEFT" x="62" y="-30"/>
+		<Anchor point="TOPLEFT" x="58" y="-30"/>
 	</Anchors>
 	<Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Gold-Border" tile="true">
 		<BackgroundInsets>
