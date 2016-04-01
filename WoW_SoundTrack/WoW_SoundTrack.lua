@@ -191,6 +191,7 @@ function ButtonListFunction(n)
 	musicselectedtitle = MusicData[1][musicselectednumber];
 	EnableButtonPlay();
 	PlayButtonSound();
+	ScrollBarList_Update();
 end
 
 -- CheckButtonTabFunction(Int n) : Appelé lors d'une activation d'un des 2 CheckButtonTab
@@ -220,7 +221,11 @@ function ScrollBarList_Update()
 	for line=1,14 do
 		lineplusoffset = line + FauxScrollFrame_GetOffset(ScrollBarList);
 		if lineplusoffset <= #SoundFiles_Paths then
-			getglobal("ButtonList"..line):SetText("|cff4BB5C1"..lineplusoffset.."|r "..MusicData[1][lineplusoffset]);
+			if lineplusoffset == musicselectednumber then
+				getglobal("ButtonList"..line):SetText("|cff4BB5C1"..lineplusoffset.." "..MusicData[1][lineplusoffset].."|r");
+			else
+				getglobal("ButtonList"..line):SetText("|cff4BB5C1"..lineplusoffset.."|r "..MusicData[1][lineplusoffset]);
+			end
 			getglobal("ButtonList"..line):Show();
 		else
 			getglobal("ButtonList"..line):Hide();
