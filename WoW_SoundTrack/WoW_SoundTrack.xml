@@ -48,14 +48,14 @@
 				<TexCoords left="0" right="0.75" top="0" bottom="1"/>
 			</Texture>
 			<Texture parentKey="SocketFrame-Left" file="Interface\ItemSocketingFrame\UI-ItemSocketingFrame">
-				<Size x="158" y="51"/>
+				<Size x="147" y="51"/>
 				<Anchors>
 					<Anchor point="BOTTOMLEFT" x="10" y="21"/>
 				</Anchors>
 				<TexCoords left="0.00390625" right="0.62109375" top="0.00390625" bottom="0.20312500"/>	
 			</Texture>
 			<Texture parentKey="SocketFrame-Right" file="Interface\ItemSocketingFrame\UI-ItemSocketingFrame">
-				<Size x="158" y="51"/>
+				<Size x="148" y="51"/>
 				<Anchors>
 					<Anchor point="BOTTOMRIGHT" x="-9" y="21"/>
 				</Anchors>
