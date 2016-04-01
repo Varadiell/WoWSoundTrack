@@ -3,6 +3,7 @@
 -- Variables locales de l'addOn
 -- ============================
 
+local musicplayednumber = 0;
 local musicselectedtitle = "";
 local musicselectednumber = 0;
 local MusicData = {} -- Names / Paths (tableau à deux dimensions)
@@ -109,11 +110,13 @@ end
 -- PlayMusicFunction() : Joue la musique sélectionnée par l'utilisateur
 function PlayMusicFunction()
 	PlayMusic(MusicData[2][musicselectednumber], "Ambience");
+	musicplayednumber = musicselectednumber;
 end
 
 -- StopMusicFunction() : Arrête la musique en cours de lecture
 function StopMusicFunction()
 	StopMusic();
+	musicplayednumber = 0;
 end
 
 -- SetMusicTitle(string) : Définit le titre de la musique en cours de lecture
@@ -168,6 +171,7 @@ function ButtonPlayFunction()
 	DisableButtonPlay();
 	EnableButtonStop();
 	SetMusicTitle(musicselectedtitle, musicselectednumber); -- TODO: à remplacer par la variable musicselected
+	ScrollBarList_Update();
 end
 
 -- ButtonStopFunction() : Appelé lors d'une activation du bouton Arrêter
@@ -177,6 +181,7 @@ function ButtonStopFunction()
 	EnableButtonPlay();
 	DisableButtonStop();
 	ClearMusicTitle();
+	ScrollBarList_Update()
 end
 
 -- ButtonCloseFunction() : Appelé lors d'une activation du bouton Fermer
@@ -189,7 +194,11 @@ end
 function ButtonListFunction(n)
 	musicselectednumber = n + FauxScrollFrame_GetOffset(ScrollBarList);
 	musicselectedtitle = MusicData[1][musicselectednumber];
-	EnableButtonPlay();
+	if musicselectednumber == musicplayednumber then
+		DisableButtonPlay();
+	else
+		EnableButtonPlay();
+	end
 	PlayButtonSound();
 	ScrollBarList_Update();
 end
@@ -197,7 +206,7 @@ end
 -- CheckButtonTabFunction(Int n) : Appelé lors d'une activation d'un des 2 CheckButtonTab
 function CheckButtonTabFunction(n)
 	PlayTabSound();
-	if(n == 1) then
+	if n == 1 then
 		CheckButtonTab1:SetChecked(true);
 		CheckButtonTab2:SetChecked(false);
 		ScrollBarFrame:Show();
@@ -221,8 +230,10 @@ function ScrollBarList_Update()
 	for line=1,14 do
 		lineplusoffset = line + FauxScrollFrame_GetOffset(ScrollBarList);
 		if lineplusoffset <= #SoundFiles_Paths then
-			if lineplusoffset == musicselectednumber then
-				getglobal("ButtonList"..line):SetText("|cff4BB5C1"..lineplusoffset.." "..MusicData[1][lineplusoffset].."|r");
+			if lineplusoffset == musicplayednumber then
+				getglobal("ButtonList"..line):SetText("|cff4BB5C1"..lineplusoffset.."|r |cff96CA2D"..MusicData[1][lineplusoffset].."|r");
+			elseif lineplusoffset == musicselectednumber then
+				getglobal("ButtonList"..line):SetText("|cff4BB5C1"..lineplusoffset.."|r |cffFBD437"..MusicData[1][lineplusoffset].."|r");
 			else
 				getglobal("ButtonList"..line):SetText("|cff4BB5C1"..lineplusoffset.."|r "..MusicData[1][lineplusoffset]);
 			end
