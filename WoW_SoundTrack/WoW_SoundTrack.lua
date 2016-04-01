@@ -35,9 +35,9 @@ end
 function InitializeWST()
 	LoadAndShowSoundTrackList();
 	ScrollBarList_Update();
-	--CheckButtonTab1:SetChecked(true);
+	CheckButtonTab1:SetChecked(true);
 	SetPortraitToTexture(MainFrame.portrait, "Interface/ICONS/Achievement_General")
-	--ShowMainFrame(); -- TODO: ligne à enlever
+	ShowMainFrame(); -- TODO: ligne à enlever
 	DisableButtonPlay(); -- TODO: ligne à décommenter
 	DisableButtonStop();
 end
