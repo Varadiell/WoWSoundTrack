@@ -37,10 +37,11 @@ function InitializeWST()
 	LoadAndShowSoundTrackList();
 	ScrollBarList_Update();
 	CheckButtonTab1:SetChecked(true);
-	SetPortraitToTexture(MainFrame.portrait, "Interface/ICONS/Achievement_General")
+	SetPortraitToTexture(MainFrame.portrait, "Interface/ICONS/Achievement_General");
 	ShowMainFrame(); -- TODO: ligne à enlever
 	DisableButtonPlay(); -- TODO: ligne à décommenter
 	DisableButtonStop();
+	DisableButtonFavori();
 	InitSavedVariables();
 end
 
@@ -113,6 +114,16 @@ end
 -- DisableButtonStop() : Rend le bouton Stop inutilisable
 function DisableButtonStop()
 	ButtonStop:Disable();
+end
+
+-- EnableButtonFavori() : Rend le bouton Favori utilisable
+function EnableButtonFavori()
+	ButtonFavori:Enable();
+end
+
+-- DisableButtonFavori() : Rend le bouton Favori inutilisable
+function DisableButtonFavori()
+	ButtonFavori:Disable();
 end
 
 -- PlayMusicFunction() : Joue la musique sélectionnée par l'utilisateur
@@ -207,6 +218,11 @@ function ButtonListFunction(n)
 	else
 		EnableButtonPlay();
 	end
+	if IsAFavoriteTrack(musicselectednumber) then
+		DisableButtonFavori();
+	else
+		EnableButtonFavori();
+	end
 	PlayButtonSound();
 	ScrollBarList_Update();
 end
@@ -225,6 +241,15 @@ function CheckButtonTabFunction(n)
 	end
 end
 
+-- ButtonFavoriFunction() : Appelé lors d'une activation du bouton Favori
+function ButtonFavoriFunction()
+	if IsAFavoriteTrack(musicselectednumber) == false then
+		WoW_SoundTrack_Favorites[#WoW_SoundTrack_Favorites + 1] = musicselectednumber;
+	end
+	DisableButtonFavori();
+	ScrollBarList_Update();
+end
+
 
 -- ========================================================================
 -- Fonction appelées lors de l'utilisation de la liste de choix (scrollbar)
@@ -235,7 +260,7 @@ function ScrollBarList_Update()
 	local line; -- 14 lignes à afficher
 	local lineplusoffset; -- Permettra d'afficher le texte d'un bouton grâce au numéro de ligne (de 1 à 14) et au décalage de l'affichage
 	local textToSet; -- Texte à mettre sur un ButtonList
-	FauxScrollFrame_Update(ScrollBarList,#SoundFiles_Paths,14,16); -- Scrollbarconcernée / nblignestotal / nblignesàafficher / tailleboutons
+	FauxScrollFrame_Update(ScrollBarList, #SoundFiles_Paths, 14, 16); -- Scrollbarconcernée / nblignestotal / nblignesàafficher / tailleboutons
 	for line=1,14 do
 		lineplusoffset = line + FauxScrollFrame_GetOffset(ScrollBarList);
 		if lineplusoffset <= #SoundFiles_Paths then

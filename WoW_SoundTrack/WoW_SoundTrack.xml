@@ -459,7 +459,7 @@
 	<Anchors>
 		<Anchor point="BOTTOMLEFT">
 			<Offset>
-				<AbsDimension x="125" y="35"/>
+				<AbsDimension x="122" y="35"/>
 			</Offset>
 		</Anchor>
 	</Anchors>
@@ -469,19 +469,19 @@
 </Button>
 
 
-<Button name="ButtonFavoris" parent="MainFrame" inherits="OptionsButtonTemplate" text="Favori">
+<Button name="ButtonFavori" parent="MainFrame" inherits="OptionsButtonTemplate" text="Favori">
 	<Size>
-		<AbsDimension x="60" y="24" />
+		<AbsDimension x="70" y="24" />
 	</Size>
 	<Anchors>
 		<Anchor point="BOTTOMLEFT">
 			<Offset>
-				<AbsDimension x="235" y="35"/>
+				<AbsDimension x="225" y="35"/>
 			</Offset>
 		</Anchor>
 	</Anchors>
 	<Scripts>
-		<OnClick> ButtonStopFunction() </OnClick>
+		<OnClick> ButtonFavoriFunction() </OnClick>
 	</Scripts>
 </Button>
 
