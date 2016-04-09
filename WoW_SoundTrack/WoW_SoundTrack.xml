@@ -400,6 +400,168 @@
 
 
 
+<Frame name="ScrollBarFrameFavori" parent="MainFrame" enableMouse="true" movable="true">
+	<Size>
+		<AbsDimension x="285" y="247"/>
+	</Size>
+	<Anchors>
+		<Anchor point="TOPLEFT" x="18" y="-72"/>
+	</Anchors>
+	<Frames>
+		<ScrollFrame name="ScrollBarListFavori" inherits="FauxScrollFrameTemplate" hidden="true">
+			<Anchors>
+				<Anchor point="TOPLEFT">
+					<Offset>
+						<AbsDimension x="0" y="-8"/>
+					</Offset>
+				</Anchor>
+				<Anchor point="BOTTOMRIGHT">
+					<Offset>
+						<AbsDimension x="-30" y="8"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+			<Scripts>
+				<OnVerticalScroll>FauxScrollFrame_OnVerticalScroll(self, offset, 16, ScrollBarListFavori_Update);</OnVerticalScroll>
+			</Scripts>
+		</ScrollFrame>
+
+		<Button name="ButtonList1Favori" inherits="ButtonListTemplate">
+			<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="ScrollBarListFavori" relativePoint="TOPLEFT">
+					<Offset>
+						<AbsDimension x="8" y="-2"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+			<Scripts>
+				<OnClick> ButtonListFunction(1); </OnClick>
+			</Scripts>
+		</Button>
+
+		<Button name="ButtonList2Favori" inherits="ButtonListTemplate">
+			<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="ButtonList1Favori" relativePoint="BOTTOMLEFT"/>
+			</Anchors>
+			<Scripts>
+				<OnClick> ButtonListFunction(2); </OnClick>
+			</Scripts>
+		</Button>
+
+		<Button name="ButtonList3Favori" inherits="ButtonListTemplate">
+			<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="ButtonList2Favori" relativePoint="BOTTOMLEFT"/>
+			</Anchors>
+			<Scripts>
+				<OnClick> ButtonListFunction(3); </OnClick>
+			</Scripts>
+		</Button>
+
+		<Button name="ButtonList4Favori" inherits="ButtonListTemplate">
+			<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="ButtonList3Favori" relativePoint="BOTTOMLEFT"/>
+			</Anchors>
+			<Scripts>
+				<OnClick> ButtonListFunction(4); </OnClick>
+			</Scripts>
+		</Button>
+
+		<Button name="ButtonList5Favori" inherits="ButtonListTemplate">
+			<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="ButtonList4Favori" relativePoint="BOTTOMLEFT"/>
+			</Anchors>
+			<Scripts>
+				<OnClick> ButtonListFunction(5); </OnClick>
+			</Scripts>
+		</Button>
+
+		<Button name="ButtonList6Favori" inherits="ButtonListTemplate">
+			<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="ButtonList5Favori" relativePoint="BOTTOMLEFT"/>
+			</Anchors>
+			<Scripts>
+				<OnClick> ButtonListFunction(6); </OnClick>
+			</Scripts>
+		</Button>
+
+		<Button name="ButtonList7Favori" inherits="ButtonListTemplate">
+			<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="ButtonList6Favori" relativePoint="BOTTOMLEFT"/>
+			</Anchors>
+			<Scripts>
+				<OnClick> ButtonListFunction(7); </OnClick>
+			</Scripts>
+		</Button>
+
+		<Button name="ButtonList8Favori" inherits="ButtonListTemplate">
+			<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="ButtonList7Favori" relativePoint="BOTTOMLEFT"/>
+			</Anchors>
+			<Scripts>
+				<OnClick> ButtonListFunction(8); </OnClick>
+			</Scripts>
+		</Button>
+
+		<Button name="ButtonList9Favori" inherits="ButtonListTemplate">
+			<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="ButtonList8Favori" relativePoint="BOTTOMLEFT"/>
+			</Anchors>
+			<Scripts>
+				<OnClick> ButtonListFunction(9); </OnClick>
+			</Scripts>
+		</Button>
+
+		<Button name="ButtonList10Favori" inherits="ButtonListTemplate">
+			<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="ButtonList9Favori" relativePoint="BOTTOMLEFT"/>
+			</Anchors>
+			<Scripts>
+				<OnClick> ButtonListFunction(10); </OnClick>
+			</Scripts>
+		</Button>
+
+		<Button name="ButtonList11Favori" inherits="ButtonListTemplate">
+			<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="ButtonList10Favori" relativePoint="BOTTOMLEFT"/>
+			</Anchors>
+			<Scripts>
+				<OnClick> ButtonListFunction(11); </OnClick>
+			</Scripts>
+		</Button>
+		
+		<Button name="ButtonList12Favori" inherits="ButtonListTemplate">
+			<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="ButtonList11Favori" relativePoint="BOTTOMLEFT"/>
+			</Anchors>
+			<Scripts>
+				<OnClick> ButtonListFunction(12); </OnClick>
+			</Scripts>
+		</Button>
+
+		<Button name="ButtonList13Favori" inherits="ButtonListTemplate">
+			<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="ButtonList12Favori" relativePoint="BOTTOMLEFT"/>
+			</Anchors>
+			<Scripts>
+				<OnClick> ButtonListFunction(13); </OnClick>
+			</Scripts>
+		</Button>
+
+		<Button name="ButtonList14Favori" inherits="ButtonListTemplate">
+			<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="ButtonList13Favori" relativePoint="BOTTOMLEFT"/>
+			</Anchors>
+			<Scripts>
+				<OnClick> ButtonListFunction(14); </OnClick>
+			</Scripts>
+		</Button>
+		
+	</Frames>
+	
+</Frame>
+
+
+
 <Frame name="FrameMusiqueEnCours" parent="MainFrame">
 	<Size>
 		<AbsDimension x="255" y="30"/>

@@ -7,6 +7,7 @@ local musicplayednumber = 0;
 local musicselectedtitle = "";
 local musicselectednumber = 0;
 local MusicData = {} -- Names / Paths (tableau à deux dimensions)
+local tabNumber = 1; --- 1:général / 2:favoris
 
 -- ===================================================
 -- Création des évènements et des scripts déclencheurs
@@ -36,10 +37,11 @@ end
 function InitializeWST()
 	LoadAndShowSoundTrackList();
 	ScrollBarList_Update();
+	ScrollBarListFavori_Update();
 	CheckButtonTab1:SetChecked(true);
 	SetPortraitToTexture(MainFrame.portrait, "Interface/ICONS/Achievement_General");
-	ShowMainFrame(); -- TODO: ligne à enlever
-	DisableButtonPlay(); -- TODO: ligne à décommenter
+	ShowMainFrame(); -- TODO: ligne à commenter
+	DisableButtonPlay();
 	DisableButtonStop();
 	DisableButtonFavori();
 	InitSavedVariables();
@@ -56,7 +58,7 @@ end
 function LoadAndShowSoundTrackList()
 	MusicData[1] = SoundFiles_Names;
 	MusicData[2] = SoundFiles_Paths;
-	ScrollBarList:Show() -- Note: Cela doit toujours être fait après avoir chargé les listes !
+	ScrollBarFrameFavori:Hide();
 end
 
 -- ShowMainFrame() : Affiche la fenêtre
@@ -191,6 +193,7 @@ function ButtonPlayFunction()
 	EnableButtonStop();
 	SetMusicTitle(musicselectedtitle, musicselectednumber); -- TODO: à remplacer par la variable musicselected
 	ScrollBarList_Update();
+	ScrollBarListFavori_Update();
 end
 
 -- ButtonStopFunction() : Appelé lors d'une activation du bouton Arrêter
@@ -200,7 +203,8 @@ function ButtonStopFunction()
 	EnableButtonPlay();
 	DisableButtonStop();
 	ClearMusicTitle();
-	ScrollBarList_Update()
+	ScrollBarList_Update();
+	ScrollBarListFavori_Update();
 end
 
 -- ButtonCloseFunction() : Appelé lors d'une activation du bouton Fermer
@@ -211,7 +215,11 @@ end
 
 -- ButtonListFunction(Int n) : Appelé lors d'une activation d'un des 14 boutons de la liste de sélection
 function ButtonListFunction(n)
-	musicselectednumber = n + FauxScrollFrame_GetOffset(ScrollBarList);
+	if tabNumber == 1 then
+		musicselectednumber = n + FauxScrollFrame_GetOffset(ScrollBarList);
+	elseif tabNumber == 2 then
+		musicselectednumber = WoW_SoundTrack_Favorites[n + FauxScrollFrame_GetOffset(ScrollBarListFavori)];
+	end
 	musicselectedtitle = MusicData[1][musicselectednumber];
 	if musicselectednumber == musicplayednumber then
 		DisableButtonPlay();
@@ -225,6 +233,7 @@ function ButtonListFunction(n)
 	end
 	PlayButtonSound();
 	ScrollBarList_Update();
+	ScrollBarListFavori_Update();
 end
 
 -- CheckButtonTabFunction(Int n) : Appelé lors d'une activation d'un des 2 CheckButtonTab
@@ -234,10 +243,14 @@ function CheckButtonTabFunction(n)
 		CheckButtonTab1:SetChecked(true);
 		CheckButtonTab2:SetChecked(false);
 		ScrollBarFrame:Show();
+		ScrollBarFrameFavori:Hide();
+		tabNumber = 1;
 	else
 		CheckButtonTab1:SetChecked(false);
 		CheckButtonTab2:SetChecked(true);
 		ScrollBarFrame:Hide();
+		ScrollBarFrameFavori:Show();
+		tabNumber = 2;
 	end
 end
 
@@ -246,8 +259,11 @@ function ButtonFavoriFunction()
 	if IsAFavoriteTrack(musicselectednumber) == false then
 		WoW_SoundTrack_Favorites[#WoW_SoundTrack_Favorites + 1] = musicselectednumber;
 	end
+	-- Tri (par ordre croissant) des id des musiques
+	table.sort(WoW_SoundTrack_Favorites, compare);
 	DisableButtonFavori();
 	ScrollBarList_Update();
+	ScrollBarListFavori_Update();
 end
 
 
@@ -265,7 +281,7 @@ function ScrollBarList_Update()
 		lineplusoffset = line + FauxScrollFrame_GetOffset(ScrollBarList);
 		if lineplusoffset <= #SoundFiles_Paths then
 			textToSet = "|cff4BB5C1"..lineplusoffset.."|r";
-			if(IsAFavoriteTrack(lineplusoffset)) then
+			if IsAFavoriteTrack(lineplusoffset)  then
 				textToSet = textToSet.."|cffC03000*|r";
 			end
 			if lineplusoffset == musicplayednumber then
@@ -282,6 +298,35 @@ function ScrollBarList_Update()
 	end
 end
 
+
+-- ScrollBarListFavori_Update() : Met à jour le contenu favori affiché par les boutons de la liste de choix
+function ScrollBarListFavori_Update()
+	local line; -- 14 lignes à afficher
+	local lineplusoffset; -- Permettra d'afficher le texte d'un bouton grâce au numéro de ligne (de 1 à 14) et au décalage de l'affichage
+	local textToSet; -- Texte à mettre sur un ButtonList
+	FauxScrollFrame_Update(ScrollBarListFavori, #WoW_SoundTrack_Favorites, 14, 16); -- Scrollbarconcernée / nblignestotal / nblignesàafficher / tailleboutons
+	for line=1,14 do
+		lineplusoffset = line + FauxScrollFrame_GetOffset(ScrollBarListFavori);
+		if lineplusoffset <= #WoW_SoundTrack_Favorites then
+			textToSet = "|cff4BB5C1"..WoW_SoundTrack_Favorites[lineplusoffset].."|r";
+			if IsAFavoriteTrack(WoW_SoundTrack_Favorites[lineplusoffset]) then
+				textToSet = textToSet.."|cffC03000*|r";
+			end
+			if WoW_SoundTrack_Favorites[lineplusoffset] == musicplayednumber then
+				getglobal("ButtonList"..line.."Favori"):SetText(textToSet.." |cff96CA2D"..MusicData[1][WoW_SoundTrack_Favorites[lineplusoffset]].."|r");
+			elseif WoW_SoundTrack_Favorites[lineplusoffset] == musicselectednumber then
+				getglobal("ButtonList"..line.."Favori"):SetText(textToSet.." |cffFBD437"..MusicData[1][WoW_SoundTrack_Favorites[lineplusoffset]].."|r");
+			else
+				getglobal("ButtonList"..line.."Favori"):SetText(textToSet.." "..MusicData[1][WoW_SoundTrack_Favorites[lineplusoffset]]);
+			end
+			getglobal("ButtonList"..line.."Favori"):Show();
+		else
+			getglobal("ButtonList"..line.."Favori"):Hide();
+		end
+	end
+end
+
+
 -- IsAFavoriteTrack() : Répond par un booléen si la piste en paramètre est une piste favorite.
 function IsAFavoriteTrack(musicNumber)
 	if WoW_SoundTrack_Favorites then
@@ -296,9 +341,8 @@ end
 
 
 -- ==============================
-
-
-
-
-
+-- Fonctions pour tri des favoris
+function compare(a, b)
+	return a < b;
+end
 
