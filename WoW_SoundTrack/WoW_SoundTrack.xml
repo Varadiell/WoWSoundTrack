@@ -240,10 +240,10 @@
 
 <Frame name="ScrollBarFrame" parent="MainFrame" enableMouse="true" movable="true">
 	<Size>
-		<AbsDimension x="278" y="247"/>
+		<AbsDimension x="285" y="247"/>
 	</Size>
 	<Anchors>
-		<Anchor point="TOPLEFT" x="25" y="-72"/>
+		<Anchor point="TOPLEFT" x="18" y="-72"/>
 	</Anchors>
 	<Frames>
 		<ScrollFrame name="ScrollBarList" inherits="FauxScrollFrameTemplate" hidden="true">
@@ -402,10 +402,10 @@
 
 <Frame name="FrameMusiqueEnCours" parent="MainFrame">
 	<Size>
-		<AbsDimension x="250" y="30"/>
+		<AbsDimension x="255" y="30"/>
 	</Size>
 	<Anchors>
-		<Anchor point="TOPLEFT" x="58" y="-30"/>
+		<Anchor point="TOPLEFT" x="53" y="-30"/>
 	</Anchors>
 	<Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Gold-Border" tile="true">
 		<BackgroundInsets>
@@ -437,12 +437,12 @@
 
 <Button name="ButtonPlay" parent="MainFrame" inherits="OptionsButtonTemplate" text="Jouer">
 	<Size>
-		<AbsDimension x="120" y="24" />
+		<AbsDimension x="100" y="24" />
 	</Size>
 	<Anchors>
 		<Anchor point="BOTTOMLEFT">
 			<Offset>
-				<AbsDimension x="35" y="35"/>
+				<AbsDimension x="25" y="35"/>
 			</Offset>
 		</Anchor>
 	</Anchors>
@@ -454,12 +454,29 @@
 
 <Button name="ButtonStop" parent="MainFrame" inherits="OptionsButtonTemplate" text="Arrêter">
 	<Size>
-		<AbsDimension x="120" y="24" />
+		<AbsDimension x="100" y="24" />
 	</Size>
 	<Anchors>
 		<Anchor point="BOTTOMLEFT">
 			<Offset>
-				<AbsDimension x="170" y="35"/>
+				<AbsDimension x="125" y="35"/>
+			</Offset>
+		</Anchor>
+	</Anchors>
+	<Scripts>
+		<OnClick> ButtonStopFunction() </OnClick>
+	</Scripts>
+</Button>
+
+
+<Button name="ButtonFavoris" parent="MainFrame" inherits="OptionsButtonTemplate" text="Favori">
+	<Size>
+		<AbsDimension x="60" y="24" />
+	</Size>
+	<Anchors>
+		<Anchor point="BOTTOMLEFT">
+			<Offset>
+				<AbsDimension x="235" y="35"/>
 			</Offset>
 		</Anchor>
 	</Anchors>

@@ -41,6 +41,14 @@ function InitializeWST()
 	ShowMainFrame(); -- TODO: ligne à enlever
 	DisableButtonPlay(); -- TODO: ligne à décommenter
 	DisableButtonStop();
+	InitSavedVariables();
+end
+
+-- InitSavedVariables() : Initialise les SavedVariables si elles n'existent pas
+function InitSavedVariables()
+	if(WoW_SoundTrack_Favorites == nil) then
+		WoW_SoundTrack_Favorites = {};
+	end
 end
 
 -- LoadAndShowSoundTrackList() : Recherche dans les fichiers la liste des noms et des emplacements des musiques et l'affiche
@@ -226,16 +234,21 @@ end
 function ScrollBarList_Update()
 	local line; -- 14 lignes à afficher
 	local lineplusoffset; -- Permettra d'afficher le texte d'un bouton grâce au numéro de ligne (de 1 à 14) et au décalage de l'affichage
+	local textToSet; -- Texte à mettre sur un ButtonList
 	FauxScrollFrame_Update(ScrollBarList,#SoundFiles_Paths,14,16); -- Scrollbarconcernée / nblignestotal / nblignesàafficher / tailleboutons
 	for line=1,14 do
 		lineplusoffset = line + FauxScrollFrame_GetOffset(ScrollBarList);
 		if lineplusoffset <= #SoundFiles_Paths then
+			textToSet = "|cff4BB5C1"..lineplusoffset.."|r";
+			if(IsAFavoriteTrack(lineplusoffset)) then
+				textToSet = textToSet.."|cffC03000*|r";
+			end
 			if lineplusoffset == musicplayednumber then
-				getglobal("ButtonList"..line):SetText("|cff4BB5C1"..lineplusoffset.."|r |cff96CA2D"..MusicData[1][lineplusoffset].."|r");
+				getglobal("ButtonList"..line):SetText(textToSet.." |cff96CA2D"..MusicData[1][lineplusoffset].."|r");
 			elseif lineplusoffset == musicselectednumber then
-				getglobal("ButtonList"..line):SetText("|cff4BB5C1"..lineplusoffset.."|r |cffFBD437"..MusicData[1][lineplusoffset].."|r");
+				getglobal("ButtonList"..line):SetText(textToSet.." |cffFBD437"..MusicData[1][lineplusoffset].."|r");
 			else
-				getglobal("ButtonList"..line):SetText("|cff4BB5C1"..lineplusoffset.."|r "..MusicData[1][lineplusoffset]);
+				getglobal("ButtonList"..line):SetText(textToSet.." "..MusicData[1][lineplusoffset]);
 			end
 			getglobal("ButtonList"..line):Show();
 		else
@@ -244,6 +257,17 @@ function ScrollBarList_Update()
 	end
 end
 
+-- IsAFavoriteTrack() : Répond par un booléen si la piste en paramètre est une piste favorite.
+function IsAFavoriteTrack(musicNumber)
+	if WoW_SoundTrack_Favorites then
+		for i=1, #WoW_SoundTrack_Favorites do
+			if(WoW_SoundTrack_Favorites[i] == musicNumber) then
+				return true;
+			end
+		end
+	end
+	return false;
+end
 
 
 -- ==============================
