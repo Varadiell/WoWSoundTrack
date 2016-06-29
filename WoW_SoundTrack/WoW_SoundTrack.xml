@@ -48,14 +48,14 @@
 				<TexCoords left="0" right="0.75" top="0" bottom="1"/>
 			</Texture>
 			<Texture parentKey="SocketFrame-Left" file="Interface\ItemSocketingFrame\UI-ItemSocketingFrame">
-				<Size x="158" y="51"/>
+				<Size x="147" y="51"/>
 				<Anchors>
 					<Anchor point="BOTTOMLEFT" x="10" y="21"/>
 				</Anchors>
 				<TexCoords left="0.00390625" right="0.62109375" top="0.00390625" bottom="0.20312500"/>	
 			</Texture>
 			<Texture parentKey="SocketFrame-Right" file="Interface\ItemSocketingFrame\UI-ItemSocketingFrame">
-				<Size x="158" y="51"/>
+				<Size x="148" y="51"/>
 				<Anchors>
 					<Anchor point="BOTTOMRIGHT" x="-9" y="21"/>
 				</Anchors>
@@ -240,10 +240,10 @@
 
 <Frame name="ScrollBarFrame" parent="MainFrame" enableMouse="true" movable="true">
 	<Size>
-		<AbsDimension x="278" y="247"/>
+		<AbsDimension x="285" y="247"/>
 	</Size>
 	<Anchors>
-		<Anchor point="TOPLEFT" x="25" y="-72"/>
+		<Anchor point="TOPLEFT" x="18" y="-72"/>
 	</Anchors>
 	<Frames>
 		<ScrollFrame name="ScrollBarList" inherits="FauxScrollFrameTemplate" hidden="true">
@@ -400,12 +400,174 @@
 
 
 
-<Frame name="FrameMusiqueEnCours" parent="MainFrame">
+<Frame name="ScrollBarFrameFavori" parent="MainFrame" enableMouse="true" movable="true">
 	<Size>
-		<AbsDimension x="250" y="30"/>
+		<AbsDimension x="285" y="247"/>
 	</Size>
 	<Anchors>
-		<Anchor point="TOPLEFT" x="58" y="-30"/>
+		<Anchor point="TOPLEFT" x="18" y="-72"/>
+	</Anchors>
+	<Frames>
+		<ScrollFrame name="ScrollBarListFavori" inherits="FauxScrollFrameTemplate" hidden="true">
+			<Anchors>
+				<Anchor point="TOPLEFT">
+					<Offset>
+						<AbsDimension x="0" y="-8"/>
+					</Offset>
+				</Anchor>
+				<Anchor point="BOTTOMRIGHT">
+					<Offset>
+						<AbsDimension x="-30" y="8"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+			<Scripts>
+				<OnVerticalScroll>FauxScrollFrame_OnVerticalScroll(self, offset, 16, ScrollBarListFavori_Update);</OnVerticalScroll>
+			</Scripts>
+		</ScrollFrame>
+
+		<Button name="ButtonList1Favori" inherits="ButtonListTemplate">
+			<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="ScrollBarListFavori" relativePoint="TOPLEFT">
+					<Offset>
+						<AbsDimension x="8" y="-2"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+			<Scripts>
+				<OnClick> ButtonListFunction(1); </OnClick>
+			</Scripts>
+		</Button>
+
+		<Button name="ButtonList2Favori" inherits="ButtonListTemplate">
+			<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="ButtonList1Favori" relativePoint="BOTTOMLEFT"/>
+			</Anchors>
+			<Scripts>
+				<OnClick> ButtonListFunction(2); </OnClick>
+			</Scripts>
+		</Button>
+
+		<Button name="ButtonList3Favori" inherits="ButtonListTemplate">
+			<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="ButtonList2Favori" relativePoint="BOTTOMLEFT"/>
+			</Anchors>
+			<Scripts>
+				<OnClick> ButtonListFunction(3); </OnClick>
+			</Scripts>
+		</Button>
+
+		<Button name="ButtonList4Favori" inherits="ButtonListTemplate">
+			<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="ButtonList3Favori" relativePoint="BOTTOMLEFT"/>
+			</Anchors>
+			<Scripts>
+				<OnClick> ButtonListFunction(4); </OnClick>
+			</Scripts>
+		</Button>
+
+		<Button name="ButtonList5Favori" inherits="ButtonListTemplate">
+			<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="ButtonList4Favori" relativePoint="BOTTOMLEFT"/>
+			</Anchors>
+			<Scripts>
+				<OnClick> ButtonListFunction(5); </OnClick>
+			</Scripts>
+		</Button>
+
+		<Button name="ButtonList6Favori" inherits="ButtonListTemplate">
+			<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="ButtonList5Favori" relativePoint="BOTTOMLEFT"/>
+			</Anchors>
+			<Scripts>
+				<OnClick> ButtonListFunction(6); </OnClick>
+			</Scripts>
+		</Button>
+
+		<Button name="ButtonList7Favori" inherits="ButtonListTemplate">
+			<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="ButtonList6Favori" relativePoint="BOTTOMLEFT"/>
+			</Anchors>
+			<Scripts>
+				<OnClick> ButtonListFunction(7); </OnClick>
+			</Scripts>
+		</Button>
+
+		<Button name="ButtonList8Favori" inherits="ButtonListTemplate">
+			<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="ButtonList7Favori" relativePoint="BOTTOMLEFT"/>
+			</Anchors>
+			<Scripts>
+				<OnClick> ButtonListFunction(8); </OnClick>
+			</Scripts>
+		</Button>
+
+		<Button name="ButtonList9Favori" inherits="ButtonListTemplate">
+			<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="ButtonList8Favori" relativePoint="BOTTOMLEFT"/>
+			</Anchors>
+			<Scripts>
+				<OnClick> ButtonListFunction(9); </OnClick>
+			</Scripts>
+		</Button>
+
+		<Button name="ButtonList10Favori" inherits="ButtonListTemplate">
+			<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="ButtonList9Favori" relativePoint="BOTTOMLEFT"/>
+			</Anchors>
+			<Scripts>
+				<OnClick> ButtonListFunction(10); </OnClick>
+			</Scripts>
+		</Button>
+
+		<Button name="ButtonList11Favori" inherits="ButtonListTemplate">
+			<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="ButtonList10Favori" relativePoint="BOTTOMLEFT"/>
+			</Anchors>
+			<Scripts>
+				<OnClick> ButtonListFunction(11); </OnClick>
+			</Scripts>
+		</Button>
+		
+		<Button name="ButtonList12Favori" inherits="ButtonListTemplate">
+			<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="ButtonList11Favori" relativePoint="BOTTOMLEFT"/>
+			</Anchors>
+			<Scripts>
+				<OnClick> ButtonListFunction(12); </OnClick>
+			</Scripts>
+		</Button>
+
+		<Button name="ButtonList13Favori" inherits="ButtonListTemplate">
+			<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="ButtonList12Favori" relativePoint="BOTTOMLEFT"/>
+			</Anchors>
+			<Scripts>
+				<OnClick> ButtonListFunction(13); </OnClick>
+			</Scripts>
+		</Button>
+
+		<Button name="ButtonList14Favori" inherits="ButtonListTemplate">
+			<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="ButtonList13Favori" relativePoint="BOTTOMLEFT"/>
+			</Anchors>
+			<Scripts>
+				<OnClick> ButtonListFunction(14); </OnClick>
+			</Scripts>
+		</Button>
+		
+	</Frames>
+	
+</Frame>
+
+
+
+<Frame name="FrameMusiqueEnCours" parent="MainFrame">
+	<Size>
+		<AbsDimension x="255" y="30"/>
+	</Size>
+	<Anchors>
+		<Anchor point="TOPLEFT" x="53" y="-30"/>
 	</Anchors>
 	<Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Gold-Border" tile="true">
 		<BackgroundInsets>
@@ -437,12 +599,12 @@
 
 <Button name="ButtonPlay" parent="MainFrame" inherits="OptionsButtonTemplate" text="Jouer">
 	<Size>
-		<AbsDimension x="120" y="24" />
+		<AbsDimension x="100" y="24" />
 	</Size>
 	<Anchors>
 		<Anchor point="BOTTOMLEFT">
 			<Offset>
-				<AbsDimension x="35" y="35"/>
+				<AbsDimension x="25" y="35"/>
 			</Offset>
 		</Anchor>
 	</Anchors>
@@ -454,17 +616,34 @@
 
 <Button name="ButtonStop" parent="MainFrame" inherits="OptionsButtonTemplate" text="Arrêter">
 	<Size>
-		<AbsDimension x="120" y="24" />
+		<AbsDimension x="100" y="24" />
 	</Size>
 	<Anchors>
 		<Anchor point="BOTTOMLEFT">
 			<Offset>
-				<AbsDimension x="170" y="35"/>
+				<AbsDimension x="122" y="35"/>
 			</Offset>
 		</Anchor>
 	</Anchors>
 	<Scripts>
 		<OnClick> ButtonStopFunction() </OnClick>
+	</Scripts>
+</Button>
+
+
+<Button name="ButtonFavori" parent="MainFrame" inherits="OptionsButtonTemplate" text="Favori">
+	<Size>
+		<AbsDimension x="70" y="24" />
+	</Size>
+	<Anchors>
+		<Anchor point="BOTTOMLEFT">
+			<Offset>
+				<AbsDimension x="225" y="35"/>
+			</Offset>
+		</Anchor>
+	</Anchors>
+	<Scripts>
+		<OnClick> ButtonFavoriFunction() </OnClick>
 	</Scripts>
 </Button>
 
@@ -484,7 +663,109 @@
 </Button>
 
 
+<Frame name="ButtonTab1" enableMouse="true" parent="MainFrame">
+	<Size>
+		<AbsDimension x="42" y="50"/>
+	</Size>
+	<Anchors>
+		<Anchor point="TOPLEFT" relativePoint="TOPRIGHT">
+			<Offset x="-1" y="-61"/>
+		</Anchor>
+	</Anchors>
+	<Layers>
+		<Layer level="BACKGROUND">
+			<Texture file="INTERFACE/SPELLBOOK/SpellBook-SkillLineTab-Glow">
+				<Size>
+					<AbsDimension x="64" y="64"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT"/>
+				</Anchors>
+			</Texture>
+		</Layer>
+	</Layers>
+	<Frames>
+		<CheckButton name="CheckButtonTab1">
+			<Size>
+				<AbsDimension x="36" y="34"/>
+			</Size>
+			<Anchors>
+				<Anchor point="TOPLEFT">
+					<Offset x="2" y="-8"/>
+				</Anchor>
+			</Anchors>
+			<Scripts>
+				<OnClick> CheckButtonTabFunction(1); </OnClick>
+			</Scripts>
+			<NormalTexture file="Interface/ICONS/Ability_Paladin_JudgementoftheWise">
+				<Size>
+					<AbsDimension x="30" y="30"/>
+				</Size>
+				<Anchors>
+					<Anchor point="CENTER">
+						<Offset>
+							<AbsDimension x="-1" y="-1"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</NormalTexture>
+			<HighlightTexture file="Interface\Buttons\ButtonHilight-Square" alphaMode="ADD"><Size/></HighlightTexture>
+			<CheckedTexture file="Interface\Buttons\UI-Quickslot-Depress"><Size/></CheckedTexture>
+		</CheckButton>
+	</Frames>
+</Frame>
 
+<Frame name="ButtonTab2" enableMouse="true" parent="MainFrame">
+	<Size>
+		<AbsDimension x="42" y="50"/>
+	</Size>
+	<Anchors>
+		<Anchor point="TOPLEFT" relativePoint="TOPRIGHT">
+			<Offset x="-1" y="-111"/>
+		</Anchor>
+	</Anchors>
+	<Layers>
+		<Layer level="BACKGROUND">
+			<Texture file="INTERFACE/SPELLBOOK/SpellBook-SkillLineTab-Glow">
+				<Size>
+					<AbsDimension x="64" y="64"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT"/>
+				</Anchors>
+			</Texture>
+		</Layer>
+	</Layers>
+	<Frames>
+		<CheckButton name="CheckButtonTab2">
+			<Size>
+				<AbsDimension x="36" y="34"/>
+			</Size>
+			<Anchors>
+				<Anchor point="TOPLEFT">
+					<Offset x="2" y="-8"/>
+				</Anchor>
+			</Anchors>
+			<Scripts>
+				<OnClick> CheckButtonTabFunction(2); </OnClick>
+			</Scripts>
+			<NormalTexture file="Interface/ICONS/Ability_Paladin_JudgementofthePure">
+				<Size>
+					<AbsDimension x="30" y="30"/>
+				</Size>
+				<Anchors>
+					<Anchor point="CENTER">
+						<Offset>
+							<AbsDimension x="-1" y="-1"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</NormalTexture>
+			<HighlightTexture file="Interface\Buttons\ButtonHilight-Square" alphaMode="ADD"><Size/></HighlightTexture>
+			<CheckedTexture file="Interface\Buttons\UI-Quickslot-Depress"><Size/></CheckedTexture>
+		</CheckButton>
+	</Frames>
+</Frame>
 
 
 </Ui>
