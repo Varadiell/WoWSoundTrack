@@ -14,7 +14,7 @@ AddOn de référencement et d'écoute des musiques de World of Warcraft.
 * Coller ce dossier directement dans "World of Warcraft/Interface/AddOns".
 
 ## /commands
-Liste des commandes pour ouvrir l'interface en jeu :
+Les actions sont accessibles à partir des commandes :
 ```
 /ws
 /wst
@@ -24,10 +24,26 @@ Liste des commandes pour ouvrir l'interface en jeu :
 /wowost
 ```
 
-Arguments (ouvre et ferme la fenêtre) :
+## Actions
+Action pouvant être effectuées grâce aux commandes :
 ```
-open
-run
-hide
-close
+open, run, hide, close : Ouvre ou ferme l'interface graphique de l'addOn
+play : Joue la musique actuellement sélectionnée.
+playrandom : Joue une musique aléatoire.
+stop : Arrête la lecture de la musique en cours de lecture.
+next : Joue la musique suivante.
+previous : Joue la musique précédente.
+
+```
+Note : d'autres actions, comme ajouter des musiques aux favoris, ne peuvent être effectuées que depuis l'interface graphique.
+
+## Exemples
+Quelques exemples :
+```
+/ws
+/wst open
+/wost next
+/wows previous
+/wowst stop
+/wowost playrandom
 ```
