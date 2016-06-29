@@ -40,7 +40,7 @@ function InitializeWST()
 	ScrollBarListFavori_Update();
 	CheckButtonTab1:SetChecked(true);
 	SetPortraitToTexture(MainFrame.portrait, "Interface/ICONS/Achievement_General");
-	ShowMainFrame(); -- TODO: ligne à commenter
+	--ShowMainFrame(); -- TODO: ligne à commenter
 	DisableButtonPlay();
 	DisableButtonStop();
 	DisableButtonFavori();
@@ -150,6 +150,25 @@ function ClearMusicTitle()
 	StringMusiqueEnCours:SetText("");
 end
 
+-- SetMusicSelection(nb) : Définit la musique actuellement sélectionnée
+function SetMusicSelection(nb)
+	musicselectednumber = nb;
+	musicselectedtitle = MusicData[1][musicselectednumber];
+	if musicselectednumber == musicplayednumber then
+		DisableButtonPlay();
+	else
+		EnableButtonPlay();
+	end
+	if IsAFavoriteTrack(musicselectednumber) then
+		DisableButtonFavori();
+	else
+		EnableButtonFavori();
+	end
+	PlayButtonSound();
+	ScrollBarList_Update();
+	ScrollBarListFavori_Update();
+end
+
 
 
 -- ==========================
@@ -172,10 +191,68 @@ SlashCmdList["SlashCmd_"] = function(msg)
 		ShowMainFrame();
 	elseif(msg:trim() == "close" or msg:trim() == "hide") then
 		HideMainFrame();
+	elseif(msg:trim() == "next") then
+		SlashCmdFunctionNext();
+	elseif(msg:trim() == "previous") then
+		SlashCmdFunctionPrevious();
+	elseif(msg:trim() == "play") then
+		SlashCmdFunctionPlay();
+	elseif(msg:trim() == "playrandom") then
+		SlashCmdFunctionPlayRandom();
+	elseif(msg:trim() == "stop") then
+		SlashCmdFunctionStop();
 	elseif(msg:trim() == "") then
 		ShowMainFrame();
 	else
 		print("WoW_SoundTrack : cette commande (\""..msg.."\") n'existe pas.");
+	end
+end
+
+
+
+-- ===================================
+-- Fonctions appelées par SlashCommand
+-- ===================================
+
+-- SlashCmdFunctionNext() : Musique suivante
+function SlashCmdFunctionNext()
+	if musicselectednumber == #SoundFiles_Paths then
+		SetMusicSelection(1);
+	else
+		SetMusicSelection(musicselectednumber + 1);
+	end
+	ButtonPlayFunction();
+end
+
+-- SlashCmdFunctionPrevious() : Musique précédente
+function SlashCmdFunctionPrevious()
+	if musicselectednumber == 1 then
+		SetMusicSelection(#SoundFiles_Paths);
+	else
+		SetMusicSelection(musicselectednumber - 1);
+	end
+	ButtonPlayFunction();
+end
+
+-- SlashCmdFunctionPlay() : Jouer la musique actuellement sélectionnée
+function SlashCmdFunctionPlay()
+	if musicselectednumber ~= 0 then
+		PlayButtonSound()
+		ButtonPlayFunction()
+	end
+end
+
+-- SlashCmdFunctionPlayRandom() : Jouer une musique aléatoire
+function SlashCmdFunctionPlayRandom()
+	SetMusicSelection(math.random(1, #SoundFiles_Paths)); -- Nombre de musiques max
+	ButtonPlayFunction();
+end
+
+-- SlashCmdFunctionNext() : Arrêter la musique actuellement en train d'être jouée
+function SlashCmdFunctionStop()
+	if musicplayednumber ~= 0 then
+		PlayButtonSound()
+		ButtonStopFunction()
 	end
 end
 
@@ -216,24 +293,10 @@ end
 -- ButtonListFunction(Int n) : Appelé lors d'une activation d'un des 14 boutons de la liste de sélection
 function ButtonListFunction(n)
 	if tabNumber == 1 then
-		musicselectednumber = n + FauxScrollFrame_GetOffset(ScrollBarList);
+		SetMusicSelection(n + FauxScrollFrame_GetOffset(ScrollBarList));
 	elseif tabNumber == 2 then
-		musicselectednumber = WoW_SoundTrack_Favorites[n + FauxScrollFrame_GetOffset(ScrollBarListFavori)];
+		SetMusicSelection(WoW_SoundTrack_Favorites[n + FauxScrollFrame_GetOffset(ScrollBarListFavori)]);
 	end
-	musicselectedtitle = MusicData[1][musicselectednumber];
-	if musicselectednumber == musicplayednumber then
-		DisableButtonPlay();
-	else
-		EnableButtonPlay();
-	end
-	if IsAFavoriteTrack(musicselectednumber) then
-		DisableButtonFavori();
-	else
-		EnableButtonFavori();
-	end
-	PlayButtonSound();
-	ScrollBarList_Update();
-	ScrollBarListFavori_Update();
 end
 
 -- CheckButtonTabFunction(Int n) : Appelé lors d'une activation d'un des 2 CheckButtonTab
@@ -262,6 +325,7 @@ function ButtonFavoriFunction()
 	-- Tri (par ordre croissant) des id des musiques
 	table.sort(WoW_SoundTrack_Favorites, compare);
 	DisableButtonFavori();
+	PlayButtonSound();
 	ScrollBarList_Update();
 	ScrollBarListFavori_Update();
 end
@@ -345,4 +409,3 @@ end
 function compare(a, b)
 	return a < b;
 end
-
