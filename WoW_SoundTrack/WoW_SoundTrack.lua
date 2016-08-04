@@ -204,7 +204,7 @@ SlashCmdList["SlashCmd_"] = function(msg)
 	elseif(msg:trim() == "") then
 		ShowMainFrame();
 	else
-		print("WoW_SoundTrack : cette commande (\""..msg.."\") n'existe pas.");
+		print("|cff4BB5C1 WoW_ST :|r cette commande (\""..msg.."\") n'existe pas.");
 	end
 end
 
@@ -245,6 +245,7 @@ end
 -- SlashCmdFunctionPlayRandom() : Jouer une musique aléatoire
 function SlashCmdFunctionPlayRandom()
 	SetMusicSelection(math.random(1, #SoundFiles_Paths)); -- Nombre de musiques max
+	print("|cff4BB5C1 WoW_ST|r |cff96CA2D"..musicselectednumber.."|r "..musicselectedtitle);
 	ButtonPlayFunction();
 end
 
