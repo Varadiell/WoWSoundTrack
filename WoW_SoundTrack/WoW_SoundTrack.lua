@@ -245,7 +245,7 @@ end
 -- SlashCmdFunctionPlayRandom() : Jouer une musique aléatoire
 function SlashCmdFunctionPlayRandom()
 	SetMusicSelection(math.random(1, #SoundFiles_Paths)); -- Nombre de musiques max
-	print("|cff4BB5C1 WoW_ST|r |cff96CA2D"..musicselectednumber.."|r "..musicselectedtitle);
+	print("|cff4BB5C1WoW_ST|r |cff96CA2D"..musicselectednumber.."|r "..musicselectedtitle);
 	ButtonPlayFunction();
 end
 
