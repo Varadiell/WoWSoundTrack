@@ -1,10 +1,13 @@
 # WoWSoundTrack
 Projet de développement d'AddOn pour World of Warcraft, à mes heures perdues.
 
-## Author
-Egöst - Medivh EU
+/!\ Projet en cours de développement /!\
 
-## Notes
+
+## Author
+Numyä (aka Egöst) - Hyjal EU
+
+## Description
 AddOn de référencement et d'écoute des musiques de World of Warcraft.
 
 ## Installation
@@ -35,7 +38,7 @@ next : Joue la musique suivante.
 previous : Joue la musique précédente.
 
 ```
-Note : d'autres actions, comme ajouter des musiques aux favoris, ne peuvent être effectuées que depuis l'interface graphique.
+Note : d'autres actions, comme ajouter des musiques aux favoris, ne peuvent être effectuées pour le moment que depuis l'interface graphique.
 
 ## Exemples
 Quelques exemples :
@@ -47,3 +50,4 @@ Quelques exemples :
 /wowst stop
 /wowost playrandom
 ```
+Note : pour une utilisation optimale de WoWSoundTrack, vous pouvez créer des macros InGame depuis lesquelles vous pourrez commander l'AddOn (musique suivante, jouer musique, arrêter musique, etc...).
